@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">TerveysAppiLuonnos</string>
+    <string name="text_first_view"><b>Tervetuloa</b>
+        Tarkkaile hyvinvointiasi.
+        Tarjoamallamme alustalla pääset seuraamaan kiputilojasi ja saat muistutuksia lääkkeistä, joita sinun on otettava.
+        VAROITUS: Tämä sovellus on testiversio, eikä terveydenhuollollinen laite. 
+        Sitä ei voi käyttää sairauden hoitamiseen tai diagnosoimiseen. 
+        Jos kärsit sairauden oireista tai sinuun sattuu, ota välittömästi yhteyttä lääkäriin. 
+        Lääkkeiden ottaminen oikein on käyttäjän omalla vastuulla ja määrät sekä annokset on tarkastettava siihen valtuutetun terveydenhuollon ammattilaisen toimesta.
+    </string>
+    <string name="next_first_view">siirry</string>
+    <string name="text_view2">Ensin tarvitsemme hieman tietoa sinusta :)</string>
+    <string name="text_tiedot_age">Ikä</string>
+    <string name="text_tiedot_height">Pituus</string>
+    <string name="text_tiedot_paino">Paino</string>
+    <string name="text_tiedot_longtermillness">Kärsitkö pitkäaikaissairaudesta?</string>
+    <string name="radio_info_yes">Kyllä</string>
+    <string name="radio_info_no">Ei</string>
+    <string name="text_user_data_sent">Kiitos! Tietosi on tallennettu.</string>
+    <string name="menu_button_pain">Kipukirjasto</string>
+    <string name="menu_button_meds">Lääkkeet</string>
+    <string name="menu_button_preferences">Asetukset</string>
+    <string name="menu_button_userinfo">Käyttäjätiedot</string>
+    <string name="add_pain_button">Kirjaa kipu</string>
+    <string name="text_pain_where">Mihin sattuu?</string>
+    <string name="text_pain_meds">Otetut lääkkeet</string>
+    <string name="button_pain_send">Lähetä</string>
+    <string name="button_pain_cancel">Peruuta</string>
+    <string name="button_meds_add">Lisää lääke</string>
+    <string name="button_meds_modify">Muokkaa lääkkeitä</string>
+    <string name="text_meds">Lääkkeet</string>
+    <string name="text_add_meds_name">Lääkkeen nimi</string>
+    <string name="add_meds_amount">Lääkeen määrä</string>
+    <string name="text_add_meds_time">Klo</string>
+    <string name="radio_meds_alert_amount1">1</string>
+    <string name="radio_meds_alert_amount2">2</string>
+    <string name="text_meds_alert_amounts">Kuinka monta kertaa hälytetään?</string>
+    <string name="text_consent_clock">Kello</string>
+    <string name="text_consents">Suostumukset (muokkaaminen saattaa vaikuttaa sovelluksen toimintaan)</string>
+    <string name="text_consent_dr">Tietojen lähettäminen lääkärille</string>
+    <string name="text_pref_dr_email">sähköposti</string>
+    <string name="txt_notifications_off">Vaienna ilmoitukset (saattaa vaikuttaa sovelluksen toimintaan)</string>
+    <string name="user_data_title">Käyttäjätiedot</string>
+    <string name="text_user_data_name">nimi</string>
+    <string name="user_data_long_term_illness">Pitkäaikaissairaudet</string>
+    <string name="edit_button">Muokkaa</string>
+    <string name="remove_all_data">Poista kaikki tiedot</string>
+    <string name="remove_warning_1">Tämä toiminto poistaa kaikki käyttäjätietosi kipukirjaston ja lääkemuistutukset mukaanlukien</string>
+    <string name="remove_all_warning2">Poistettuja tietoja ei voi enää palauttaa.</string>
+    <string name="is_delete_ok">Poistetaanko käyttäjätiedot?</string>
+    <string name="button_continue">jatka</string>
+</resources>

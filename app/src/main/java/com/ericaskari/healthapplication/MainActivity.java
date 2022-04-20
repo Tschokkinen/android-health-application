@@ -1,5 +1,6 @@
 package com.ericaskari.healthapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -43,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        //Used for testing firstLaunch.class (activity_first_launch)
+        Intent intent = new Intent(this, FirstLaunch.class);
+        startActivity(intent);
     }
 
     @Override

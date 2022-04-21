@@ -1,53 +1,70 @@
 package com.ericaskari.healthapplication;
 
-import android.content.Intent;
+import static android.content.ContentValues.TAG;
+
+import android.os.AsyncTask;
 import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
+import com.ericaskari.healthapplication.daos.UserDao;
+import com.ericaskari.healthapplication.models.User;
+import com.ericaskari.healthapplication.services.AppDatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.View;
+import android.util.Log;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.room.Room;
 
 import com.ericaskari.healthapplication.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.Date;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
-    private ActivityMainBinding binding;
+    private ActivityMainBinding activityMainBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").build();
 
-        setSupportActionBar(binding.toolbar);
+        AsyncTask.execute(() -> {
+            UserDao userDao = db.userDao();
+            List<User> users = userDao.getAll();
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+            Log.d(TAG, "users.toArray().length: " + users.toArray().length);
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            //  Just to debug
+            for (int i = 0; i < users.toArray().length; i++) {
+                Log.d(TAG, "onCreate: " + users.toArray()[i]);
             }
-        });
 
-        //Used for testing firstLaunch.class (activity_first_launch)
-        Intent intent = new Intent(this, FirstLaunch.class);
-        startActivity(intent);
+            //  We can check if users.toArray().length is zero then it means that app is not initialized.
+            if (users.toArray().length == 0) {
+                //  TODO: Load the another activity and first launch stuff
+                User user = new User("John", "Doe", new Date(), 55);
+                userDao.insertAll(user);
+                setContentView(activityMainBinding.getRoot());
+            } else {
+                setContentView(activityMainBinding.getRoot());
+            }
+
+            setSupportActionBar(activityMainBinding.toolbar);
+            NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+            appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+            NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        });
     }
 
     @Override
@@ -70,12 +87,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
     }
 }

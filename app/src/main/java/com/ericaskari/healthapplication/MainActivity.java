@@ -2,6 +2,7 @@ package com.ericaskari.healthapplication;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /*
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
 
         AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").build();
@@ -49,22 +51,31 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < users.toArray().length; i++) {
                 Log.d(TAG, "onCreate: " + users.toArray()[i]);
             }
+*/
 
             //  We can check if users.toArray().length is zero then it means that app is not initialized.
-            if (users.toArray().length == 0) {
+/*            if (users.toArray().length == 0) {
                 //  TODO: Load the another activity and first launch stuff
                 User user = new User("John", "Doe", new Date(), 55);
                 userDao.insertAll(user);
                 setContentView(activityMainBinding.getRoot());
+
+
             } else {
                 setContentView(activityMainBinding.getRoot());
             }
-
+*/
+        /*
             setSupportActionBar(activityMainBinding.toolbar);
             NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
             appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
             NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         });
+*/
+
+        //Used for testing firstLaunch.class (activity_first_launch)
+        Intent intent = new Intent(this, FirstLaunch.class);
+        startActivity(intent);
     }
 
     @Override

@@ -24,17 +24,21 @@ public class User {
     public Date birthDate;
 
     @ColumnInfo()
+    public int height;
+
+    @ColumnInfo()
     public int weight;
 
     public User() {
         this.id = UUID.randomUUID().toString();
     }
 
-    public User(String firstName, String lastName, Date birthDate, int weight) {
+    public User(String firstName, String lastName, Date birthDate, int height, int weight) {
         this.id = UUID.randomUUID().toString();
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
+        this.height = height;
         this.weight = weight;
     }
 

@@ -16,9 +16,10 @@
     <string name="user_data_backButton">Takaisin</string>
     <string name="user_data_doneButton">Valmis</string>
     <string name="user_data_title">Käyttäjätiedot</string>
-    <string name="user_data_text_name">Nimi</string>
+    <string name="user_data_text_name">Etunimi</string>
+    <string name="user_data_text_lastname">Sukunimi</string>
     <string name="user_data_text_long_term_illness">Pitkäaikaissairaudet</string>
-    <string name="user_data_text_age">Ikä</string>
+    <string name="user_data_text_age">pp/kk/vvvv</string>
     <string name="user_data_text_height">Pituus</string>
     <string name="user_data_text_weight">Paino</string>
     <string name="user_data_long_term_illness">Onko sinulla pitkäaikaissairauksia?</string>

@@ -30,4 +30,16 @@
     <string name="radio_button_no">Ei</string>
     <string name="user_data_text_sent">Kiitos! Tietosi on tallennettu.</string>
     <!-- End -->
+
+    <!-- Report a pain -->
+    <string name="where_is_the_pain">Mihin sattuu?</string>
+
+    <string-array name="list_of_pains">
+        <item>Niska</item>
+        <item>Hartia</item>
+        <item>Polvi</item>
+        <item>Yläselkä</item>
+        <item>Alaselkä</item>
+    </string-array>
+    <!-- End -->
 </resources>

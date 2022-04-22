@@ -18,7 +18,7 @@ import java.util.Date;
 
 /**
  * @author Gavril Tschokkinen
- *
+ * Activity for user data collection during the first launch of the application.
  */
 
 public class FirstLaunch extends AppCompatActivity {
@@ -81,7 +81,7 @@ public class FirstLaunch extends AppCompatActivity {
             longTermIllness = "Ei pitkäaikaissairauksia.";
         }
 
-        if(!firstName.isEmpty() && !lastName.isEmpty() && !height.isEmpty() && !weight.isEmpty()) {
+        if(!firstName.isEmpty() && !lastName.isEmpty() && !height.isEmpty() && !weight.isEmpty() && date != 0 && month != 0 && year != 0) {
             AsyncTask.execute(() -> {
                 User user = new User(firstName, lastName, new Date(year, month, date), Integer.parseInt(height), Integer.parseInt(weight), longTermIllness);
                 this.db.userDao().insertAll(user);
@@ -91,6 +91,7 @@ public class FirstLaunch extends AppCompatActivity {
             });
         } else {
             Log.d("FirstLaunch", "A required field is null");
+            //Add a warning prompt here
         }
     }
 

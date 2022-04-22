@@ -6,6 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+/**
+ * @author Gavril Tschokkinen
+ * Used to indicate that user data on FirstLaunch activity has been saved successfully.
+ */
+
 public class FirstLaunchDone extends AppCompatActivity {
 
     @Override

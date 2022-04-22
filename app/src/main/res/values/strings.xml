@@ -30,4 +30,9 @@
     <string name="radio_button_no">Ei</string>
     <string name="user_data_text_sent">Kiitos! Tietosi on tallennettu.</string>
     <!-- End -->
+    <string name="main_activity_pain_history">Kipuhistoria</string>
+    <string name="main_activity_medicines">Lääkkeet</string>
+    <string name="main_activity_settings">Asetukset</string>
+    <string name="main_activity_own_information">Omat tiedot</string>
+    <string name="main_activity_plus">Mihin sattuu?</string>
 </resources>

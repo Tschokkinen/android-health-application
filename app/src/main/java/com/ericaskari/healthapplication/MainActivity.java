@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
             //  Check if first init activity is needed.
             if (users.toArray().length == 0) {
-                Intent intent = new Intent(this, FirstLaunch.class);
+                Intent intent = new Intent(this, Hello.class);
                 startActivity(intent);
             } else {
                 setContentView(activityMainBinding.getRoot());

@@ -10,9 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthApplication">
         <activity
-            android:name=".FirstLaunch"
-            android:label="@string/first_launch_activity_name"
+            android:name=".FirstLaunchDone"
             android:exported="false" />
+        <activity
+            android:name=".Hello"
+            android:exported="false"
+            android:label="Tervetuloa" />
+        <activity
+            android:name=".ReportPain"
+            android:exported="false"
+            android:label="Kirjaa kipu" />
+        <activity
+            android:name=".FirstLaunch"
+            android:exported="false"
+            android:label="@string/first_launch_activity_name" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

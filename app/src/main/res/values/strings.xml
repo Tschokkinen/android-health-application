@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">Health Application</string>
+    <string name="app_name">Mihin sattuu?</string>
+    <string name="first_launch_activity_name">Tervetuloa</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -9,4 +10,24 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!-- First launch -->
+    <string name="user_data_message">Ensin tarvitsemme hieman tietoa sinusta :)</string>
+    <string name="user_data_nextButton">Seuraava</string>
+    <string name="user_data_backButton">Takaisin</string>
+    <string name="user_data_doneButton">Valmis</string>
+    <string name="user_data_title">Käyttäjätiedot</string>
+    <string name="user_data_text_name">Etunimi</string>
+    <string name="user_data_text_lastname">Sukunimi</string>
+    <string name="user_data_text_long_term_illness">Pitkäaikaissairaudet</string>
+    <string name="user_data_text_age">pp/kk/vvvv</string>
+    <string name="user_data_text_height">Pituus</string>
+    <string name="user_data_text_weight">Paino</string>
+    <string name="user_data_long_term_illness">Onko sinulla pitkäaikaissairauksia?</string>
+    <string name="radio_info_yes">Kyllä</string>
+    <string name="radio_info_no">Ei</string>
+    <string name="radio_button_yes">Kyllä</string>
+    <string name="radio_button_no">Ei</string>
+    <string name="user_data_text_sent">Kiitos! Tietosi on tallennettu.</string>
+    <!-- End -->
 </resources>

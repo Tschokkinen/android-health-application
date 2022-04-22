@@ -2,6 +2,7 @@ package com.ericaskari.healthapplication;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -31,40 +32,29 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding activityMainBinding;
+    AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
 
-        AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").build();
+
+        this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").build();
 
         AsyncTask.execute(() -> {
-            UserDao userDao = db.userDao();
-            List<User> users = userDao.getAll();
+            //  Get all users from Database
+            List<User> users = this.db.userDao().getAll();
 
-            Log.d(TAG, "users.toArray().length: " + users.toArray().length);
-
-            //  Just to debug
-            for (int i = 0; i < users.toArray().length; i++) {
-                Log.d(TAG, "onCreate: " + users.toArray()[i]);
-            }
-
-            //  We can check if users.toArray().length is zero then it means that app is not initialized.
+            //  Check if first init activity is needed.
             if (users.toArray().length == 0) {
-                //  TODO: Load the another activity and first launch stuff
-                User user = new User("John", "Doe", new Date(), 55);
-                userDao.insertAll(user);
-                setContentView(activityMainBinding.getRoot());
+                Intent intent = new Intent(this, FirstLaunch.class);
+                startActivity(intent);
             } else {
                 setContentView(activityMainBinding.getRoot());
             }
-
-            setSupportActionBar(activityMainBinding.toolbar);
-            NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-            appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-            NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         });
+
     }
 
     @Override

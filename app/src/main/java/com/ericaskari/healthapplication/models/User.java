@@ -29,17 +29,21 @@ public class User {
     @ColumnInfo()
     public int weight;
 
+    @ColumnInfo()
+    public String longTermIllness;
+
     public User() {
         this.id = UUID.randomUUID().toString();
     }
 
-    public User(String firstName, String lastName, Date birthDate, int height, int weight) {
+    public User(String firstName, String lastName, Date birthDate, int height, int weight, String longTermIllness) {
         this.id = UUID.randomUUID().toString();
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.height = height;
         this.weight = weight;
+        this.longTermIllness = longTermIllness;
     }
 
     @Override

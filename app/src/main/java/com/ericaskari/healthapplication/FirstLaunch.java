@@ -49,9 +49,11 @@ public class FirstLaunch extends AppCompatActivity {
 
         } else if(v == findViewById(R.id.button02)) {
             saveData();
+            //setContentView(R.layout.activity_first_launch_done);
 
         } else if(v == findViewById(R.id.button03)) {
             setContentView(R.layout.activity_first_launch);
+            radioButtonSelection();
 
         } else if(v == findViewById(R.id.button04)) {
             Intent intent = new Intent(this, MainActivity.class);
@@ -66,12 +68,13 @@ public class FirstLaunch extends AppCompatActivity {
     private void saveData() {
         String firstName = ((EditText) findViewById(R.id.firstName)).getText().toString();
         String lastName = ((EditText) findViewById(R.id.lastName)).getText().toString();
-        Date birthDate = new Date(((EditText) findViewById(R.id.age)).getText().toString());
+        //Date birthDate = new Date(((EditText) findViewById(R.id.age)).getText().toString());
         String height = ((EditText) findViewById(R.id.height)).getText().toString();
         String weight = ((EditText) findViewById(R.id.weight)).getText().toString();
 
+
         AsyncTask.execute(() -> {
-            User user = new User(firstName, lastName, birthDate, Integer.parseInt(height), Integer.parseInt(weight));
+            User user = new User(firstName, lastName, new Date(1984, 12, 14), Integer.parseInt(height), Integer.parseInt(weight), "Ei");
             this.db.userDao().insertAll(user);
             setContentView(R.layout.activity_first_launch_done);
         });

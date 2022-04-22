@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
 
+
         this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").build();
 
         AsyncTask.execute(() -> {
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 setContentView(activityMainBinding.getRoot());
             }
         });
+
     }
 
     @Override

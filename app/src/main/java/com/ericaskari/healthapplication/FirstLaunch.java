@@ -18,6 +18,7 @@ import java.util.Date;
 
 /**
  * @author Gavril Tschokkinen
+ *
  */
 
 public class FirstLaunch extends AppCompatActivity {

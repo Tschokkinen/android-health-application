@@ -10,14 +10,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthApplication">
         <activity
-            android:name=".FirstLaunch"
-            android:label="@string/first_launch_activity_name"
+            android:name=".FirstLaunchDone"
             android:exported="false" />
         <activity android:name=".modules.painhistory.PainHistoryActivity" android:label="@string/main_activity_pain_history" android:exported="false" />
         <activity android:name=".modules.medicines.MedicinesActivity" android:label="@string/main_activity_medicines" android:exported="false" />
         <activity android:name=".modules.settings.SettingsActivity" android:label="@string/main_activity_settings" android:exported="false" />
         <activity android:name=".modules.profile.ProfileActivity" android:label="@string/main_activity_own_information" android:exported="false" />
         <activity android:name=".modules.painhistory.NewPainLogActivity" android:label="@string/main_activity_plus" android:exported="false" />
+        <activity
+            android:name=".Hello"
+            android:exported="false"
+            android:label="Tervetuloa" />
+        <activity
+            android:name=".ReportPain"
+            android:exported="false"
+            android:label="Kirjaa kipu" />
+        <activity
+            android:name=".FirstLaunch"
+            android:exported="false"
+            android:label="@string/first_launch_activity_name" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

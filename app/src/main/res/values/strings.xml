@@ -30,16 +30,11 @@
     <string name="radio_button_no">Ei</string>
     <string name="user_data_text_sent">Kiitos! Tietosi on tallennettu.</string>
     <!-- End -->
-
-    <!-- Report a pain -->
-    <string name="where_is_the_pain">Mihin sattuu?</string>
-
-    <string-array name="list_of_pains">
-        <item>Niska</item>
-        <item>Hartia</item>
-        <item>Polvi</item>
-        <item>Yläselkä</item>
-        <item>Alaselkä</item>
-    </string-array>
-    <!-- End -->
+    <string name="main_activity_pain_history">Kipuhistoria</string>
+    <string name="main_activity_medicines">Lääkkeet</string>
+    <string name="main_activity_settings">Asetukset</string>
+    <string name="main_activity_own_information">Omat tiedot</string>
+    <string name="main_activity_plus">Mihin sattuu?</string>
+    <string name="delete_data">Poista tiedot</string>
+    <string name="profile_menu_edit">Muokkaa</string>
 </resources>

@@ -5,41 +5,34 @@ import static android.content.ContentValues.TAG;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
-import com.ericaskari.healthapplication.daos.UserDao;
 import com.ericaskari.healthapplication.models.User;
+import com.ericaskari.healthapplication.modules.medicines.MedicinesActivity;
+import com.ericaskari.healthapplication.modules.painhistory.NewPainLogActivity;
+import com.ericaskari.healthapplication.modules.painhistory.PainHistoryActivity;
+import com.ericaskari.healthapplication.modules.profile.ProfileActivity;
+import com.ericaskari.healthapplication.modules.settings.SettingsActivity;
 import com.ericaskari.healthapplication.services.AppDatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.util.Log;
-
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.room.Room;
 
 import com.ericaskari.healthapplication.databinding.ActivityMainBinding;
 
-import android.view.Menu;
-import android.view.MenuItem;
-
-import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding activityMainBinding;
-    AppDatabase db;
+    private AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
-
-
         this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").build();
 
         AsyncTask.execute(() -> {
@@ -55,27 +48,43 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        activityMainBinding.painHistoryButton.setOnClickListener(this::onPainHistoryButtonClick);
+        activityMainBinding.medicinesButton.setOnClickListener(this::onMedicinesButtonClick);
+        activityMainBinding.settingsButton.setOnClickListener(this::onSettingsButtonClick);
+        activityMainBinding.profileButton.setOnClickListener(this::onProfileButtonClick);
+        activityMainBinding.addButton.setOnClickListener(this::onAddButtonClick);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    private void onSettingsButtonClick(View view) {
+        Log.d(TAG, "onSettingsButtonClick: ");
+        startActivity(new Intent(this, SettingsActivity.class));
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+    private void onPainHistoryButtonClick(View view) {
+        Log.d(TAG, "onPainHistoryButtonClick: ");
+        startActivity(new Intent(this, PainHistoryActivity.class));
 
-        return super.onOptionsItemSelected(item);
+    }
+
+
+    private void onMedicinesButtonClick(View view) {
+        Log.d(TAG, "onMedicinesButtonClick: ");
+        startActivity(new Intent(this, MedicinesActivity.class));
+
+    }
+
+
+    private void onProfileButtonClick(View view) {
+        Log.d(TAG, "onProfileButtonClick: ");
+        startActivity(new Intent(this, ProfileActivity.class));
+
+    }
+
+
+    private void onAddButtonClick(View view) {
+        Log.d(TAG, "onAddButtonClick: ");
+        startActivity(new Intent(this, NewPainLogActivity.class));
+
     }
 }

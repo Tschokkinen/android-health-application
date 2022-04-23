@@ -29,7 +29,8 @@
     <string name="radio_button_yes">Kyllä</string>
     <string name="radio_button_no">Ei</string>
     <string name="user_data_text_sent">Kiitos! Tietosi on tallennettu.</string>
-    <!-- End -->
+    <!--First Launch End -->
+
     <string name="main_activity_pain_history">Kipuhistoria</string>
     <string name="main_activity_medicines">Lääkkeet</string>
     <string name="main_activity_settings">Asetukset</string>
@@ -38,4 +39,26 @@
     <string name="delete_data">Poista tiedot</string>
     <string name="profile_menu_edit">Muokkaa</string>
     <string name="birthdate">Syntymäpäivä</string>
+
+    <!-- NewPainLog -->
+    <string name="where_is_the_pain">Mihin sattuu?</string>
+    <string name="describe_the_pain">Kerro kivusta...</string>
+
+    <string-array name="list_of_pains">
+        <item>Niska</item>
+        <item>Hartia</item>
+        <item>Polvi</item>
+        <item>Yläselkä</item>
+        <item>Alaselkä</item>
+        <item>Ei mikään näistä</item>
+    </string-array>
+
+    <string name="have_you_taken_medicine_for_the_pain">Oletko ottanut kipuun lääkettä?</string>
+    <string name="medicine_taken_for_the_pain">Kirjaa lääkkeet tähän...</string>
+    <string name="button_ready">Valmis</string>
+    <string name="how_strong_is_the_pain">Kuinka kova kipu on asteikolla 1-10</string>
+    <string name="how_does_the_pain_affect">Miten kipu vaikuttaa mielialaasi?</string>
+    <string name="tell_about_your_feelings">Kerro...</string>
+    <!--NewPainLog End -->
+
 </resources>

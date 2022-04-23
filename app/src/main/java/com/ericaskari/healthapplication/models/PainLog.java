@@ -23,16 +23,28 @@ public class PainLog {
     @ColumnInfo()
     public Date createdAt;
 
+    @ColumnInfo()
+    public int painStrength;
+
+    @ColumnInfo()
+    public String medicineTaken;
+
+    @ColumnInfo()
+    public String tellAboutYourFeelings;
+
     public PainLog() {
         this.id = UUID.randomUUID().toString();
         this.createdAt = new Date();
     }
 
-    public PainLog(String bodyPart, String description) {
+    public PainLog(Date createdAt, String bodyPart, String description, String medicineTaken, int painStrength, String tellAboutYourFeelings) {
         this.id = UUID.randomUUID().toString();
-        this.createdAt = new Date();
+        this.createdAt = createdAt;
         this.bodyPart = bodyPart;
         this.description = description;
+        this.medicineTaken = medicineTaken;
+        this.painStrength = painStrength;
+        this.tellAboutYourFeelings = tellAboutYourFeelings;
     }
 
     @Override
@@ -41,7 +53,10 @@ public class PainLog {
                 "id='" + id + '\'' +
                 ", bodyPart='" + bodyPart + '\'' +
                 ", description='" + description + '\'' +
-                ", createdAt=" + createdAt +
+                ", createdAt=" + createdAt + '\'' +
+                ", medicineTaken=" + medicineTaken + '\'' +
+                ", painStrength=" + painStrength + '\'' +
+                ", tellAboutYourFeelings=" + tellAboutYourFeelings +
                 '}';
     }
 }

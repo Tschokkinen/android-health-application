@@ -6,6 +6,7 @@ import androidx.room.Room;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -18,6 +19,7 @@ import java.util.Date;
 
 /**
  * @author Gavril Tschokkinen
+ * Activity for user data collection during the first launch of the application.
  */
 
 public class FirstLaunch extends AppCompatActivity {
@@ -76,11 +78,32 @@ public class FirstLaunch extends AppCompatActivity {
             year = Integer.parseInt(splitBirthDate[2]);
         }
 
+        //Check if any of the required fields is empty.
         if(longTermIllness.isEmpty()){
             longTermIllness = "Ei pitkäaikaissairauksia.";
         }
 
-        if(!firstName.isEmpty() && !lastName.isEmpty() && !height.isEmpty() && !weight.isEmpty()) {
+        if(TextUtils.isEmpty(firstName)) {
+            editTextFirstName.setError("Pakollinen kenttä");
+        }
+
+        if(TextUtils.isEmpty(lastName)) {
+            editTextLastName.setError("Pakollinen kenttä");
+        }
+
+        if(TextUtils.isEmpty(birthDate)) {
+            editTextAge.setError("Pakollinen kenttä");
+        }
+
+        if(TextUtils.isEmpty(height)) {
+            editTextHeight.setError("Pakollinen kenttä");
+        }
+
+        if(TextUtils.isEmpty(weight)) {
+            editTextWeight.setError("Pakollinen kenttä");
+        }
+
+        if(!firstName.isEmpty() && !lastName.isEmpty() && !height.isEmpty() && !weight.isEmpty() && date != 0 && month != 0 && year != 0) {
             AsyncTask.execute(() -> {
                 User user = new User(firstName, lastName, new Date(year, month, date), Integer.parseInt(height), Integer.parseInt(weight), longTermIllness);
                 this.db.userDao().insertAll(user);
@@ -90,6 +113,7 @@ public class FirstLaunch extends AppCompatActivity {
             });
         } else {
             Log.d("FirstLaunch", "A required field is null");
+            //Add a warning prompt here
         }
     }
 

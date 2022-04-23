@@ -16,6 +16,7 @@
         <activity android:name=".modules.medicines.MedicinesActivity" android:label="@string/main_activity_medicines" android:exported="false" />
         <activity android:name=".modules.settings.SettingsActivity" android:label="@string/main_activity_settings" android:exported="false" />
         <activity android:name=".modules.profile.ProfileActivity" android:label="@string/main_activity_own_information" android:exported="false" />
+        <activity android:name=".modules.profile.ProfileEditActivity" android:label="@string/main_activity_own_information" android:exported="false" />
         <activity android:name=".modules.painhistory.NewPainLogActivity" android:label="@string/main_activity_plus" android:exported="false" />
         <activity
             android:name=".Hello"

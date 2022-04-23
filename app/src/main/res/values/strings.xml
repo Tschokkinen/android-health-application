@@ -37,4 +37,5 @@
     <string name="main_activity_plus">Mihin sattuu?</string>
     <string name="delete_data">Poista tiedot</string>
     <string name="profile_menu_edit">Muokkaa</string>
+    <string name="birthdate">Syntymäpäivä</string>
 </resources>

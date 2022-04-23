@@ -40,7 +40,7 @@ public class FirstLaunch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_launch);
 
-        this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").build();
+        this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").allowMainThreadQueries().build();
 
         radioButtonSelection();
 

@@ -26,7 +26,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         settingsActivityBinding = SettingsBinding.inflate(getLayoutInflater());
-        this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").build();
+        this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").allowMainThreadQueries().build();
 
         setContentView(settingsActivityBinding.getRoot());
 

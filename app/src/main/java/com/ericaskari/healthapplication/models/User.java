@@ -6,6 +6,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -56,4 +57,5 @@ public class User {
                 ", weight=" + weight +
                 '}';
     }
+
 }

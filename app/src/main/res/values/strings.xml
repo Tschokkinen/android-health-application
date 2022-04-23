@@ -37,6 +37,7 @@
     <string name="main_activity_plus">Mihin sattuu?</string>
     <string name="delete_data">Poista tiedot</string>
     <string name="profile_menu_edit">Muokkaa</string>
+    <string name="birthdate">Syntymäpäivä</string>
 
     <!-- Report a pain -->
     <string name="where_is_the_pain">Mihin sattuu?</string>

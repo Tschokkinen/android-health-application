@@ -27,8 +27,8 @@
 
         <RadioGroup
             android:id="@+id/radioGroupLogPain"
-            android:layout_width="75dp"
-            android:layout_height="112dp"
+            android:layout_width="145dp"
+            android:layout_height="118dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:checkedButton="@id/radioButtonPainLogNo"
@@ -63,16 +63,15 @@
 
         <EditText
             android:id="@+id/editTextMedicineTaken"
-            android:layout_width="225dp"
-            android:layout_height="51dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
             android:ems="10"
             android:hint="@string/medicine_taken_for_the_pain"
             android:inputType="textPersonName"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:layout_constraintStart_toEndOf="@+id/radioGroupLogPain"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            tools:layout_editor_absoluteY="227dp" />
 
         <Button
             android:id="@+id/buttonLogPainReady"
@@ -111,36 +110,10 @@
             android:id="@+id/textViewPainStrenght"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
             android:text="TextView"
-            android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/seekBarHowStrongIsThePain"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-        <TextView
-            android:id="@+id/textViewHowDoesThePainAffect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/how_does_the_pain_affect"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroupLogPain" />
-
-        <EditText
-            android:id="@+id/editTextTellAboutYourFeelings"
-            android:layout_width="375dp"
-            android:layout_height="49dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:ems="10"
-            android:hint="@string/tell_about_your_feelings"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewHowDoesThePainAffect" />
+            tools:layout_editor_absoluteY="122dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

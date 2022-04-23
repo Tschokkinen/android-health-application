@@ -109,16 +109,16 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="337dp"
-        android:layout_height="100dp"
+        android:layout_width="176dp"
+        android:layout_height="101dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:checkedButton="@+id/radioNo"
         app:layout_constraintBottom_toTopOf="@+id/editTextLongTermIllness"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.565"
-        android:checkedButton="@+id/radioNo">
+        app:layout_constraintVertical_bias="0.565">
 
         <RadioButton
             android:id="@+id/radioYes"

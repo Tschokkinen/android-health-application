@@ -6,6 +6,7 @@ import androidx.room.Room;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -77,8 +78,29 @@ public class FirstLaunch extends AppCompatActivity {
             year = Integer.parseInt(splitBirthDate[2]);
         }
 
+        //Check if any of the required fields is empty.
         if(longTermIllness.isEmpty()){
             longTermIllness = "Ei pitkäaikaissairauksia.";
+        }
+
+        if(TextUtils.isEmpty(firstName)) {
+            editTextFirstName.setError("Pakollinen kenttä");
+        }
+
+        if(TextUtils.isEmpty(lastName)) {
+            editTextLastName.setError("Pakollinen kenttä");
+        }
+
+        if(TextUtils.isEmpty(birthDate)) {
+            editTextAge.setError("Pakollinen kenttä");
+        }
+
+        if(TextUtils.isEmpty(height)) {
+            editTextHeight.setError("Pakollinen kenttä");
+        }
+
+        if(TextUtils.isEmpty(weight)) {
+            editTextWeight.setError("Pakollinen kenttä");
         }
 
         if(!firstName.isEmpty() && !lastName.isEmpty() && !height.isEmpty() && !weight.isEmpty() && date != 0 && month != 0 && year != 0) {

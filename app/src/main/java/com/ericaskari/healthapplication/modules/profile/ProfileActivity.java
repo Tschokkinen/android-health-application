@@ -2,24 +2,45 @@ package com.ericaskari.healthapplication.modules.profile;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
+import com.ericaskari.healthapplication.Hello;
 import com.ericaskari.healthapplication.R;
 import com.ericaskari.healthapplication.databinding.ProfileBinding;
+import com.ericaskari.healthapplication.models.User;
+import com.ericaskari.healthapplication.services.AppDatabase;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 public class ProfileActivity extends AppCompatActivity {
-    private ProfileBinding profileBinding;
+    private ProfileBinding binding;
+    private AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        profileBinding = ProfileBinding.inflate(getLayoutInflater());
-        setContentView(profileBinding.getRoot());
+        this.binding = ProfileBinding.inflate(getLayoutInflater());
+        this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").allowMainThreadQueries().build();
+
+        setContentView(binding.getRoot());
+        updateUi();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateUi();
+        Log.d(TAG, "onResume: ");
     }
 
     /**
@@ -48,5 +69,42 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void onProfileMenuEditButtonClick() {
         Log.d(TAG, "onProfileMenuEditButtonClick: ");
+        Intent intent = new Intent(this, ProfileEditActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Update UI value of date
+     */
+    private void updateBirthdateUiValue(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+        //  Since month starts from zero we need to add one to show in UI
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int dayOfMonth = calendar.get(Calendar.DATE);
+
+        Log.d(TAG, "updateBirthdateUiValue: : " + year + " " + month + " " + dayOfMonth);
+
+        this.binding.birthdateValue.setText(
+                new StringBuilder()
+                        .append(dayOfMonth)
+                        .append(".")
+                        .append(month)
+                        .append(".")
+                        .append(year)
+                        .toString()
+        );
+    }
+
+    private void updateUi() {
+        User user = this.db.userDao().getAll().get(0);
+        this.binding.firstnameValue.setText(user.firstName.toString());
+        this.binding.lastNameValue.setText(user.lastName.toString());
+        this.updateBirthdateUiValue(user.birthDate);
+        this.binding.heightValue.setText(String.valueOf(user.height));
+        this.binding.weightValue.setText(String.valueOf(user.weight));
+        this.binding.longTermIllnessValue.setText(String.valueOf(user.longTermIllness));
     }
 }

@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
-        this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").build();
+        this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").allowMainThreadQueries().build();
 
         AsyncTask.execute(() -> {
             //  Get all users from Database

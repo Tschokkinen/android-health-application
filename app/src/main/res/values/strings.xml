@@ -49,5 +49,9 @@
         <item>Alaselkä</item>
         <item>Ei mikään näistä</item>
     </string-array>
+    <string name="have_you_taken_medicine_for_the_pain">Oletko ottanut kipuun lääkettä?</string>
+    <string name="medicine_taken_for_the_pain">Kirjaa lääkkeet tähän...</string>
+    <string name="button_ready">Valmis</string>
+    <string name="how_strong_is_the_pain">Kuinka kova kipu on asteikoll 1-10</string>
     <!-- End -->
 </resources>

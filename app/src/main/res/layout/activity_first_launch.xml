@@ -117,7 +117,8 @@
         app:layout_constraintBottom_toTopOf="@+id/editTextLongTermIllness"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.565">
+        app:layout_constraintVertical_bias="0.565"
+        android:checkedButton="@+id/radioNo">
 
         <RadioButton
             android:id="@+id/radioYes"

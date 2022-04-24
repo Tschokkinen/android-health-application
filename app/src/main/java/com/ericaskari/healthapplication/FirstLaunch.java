@@ -68,7 +68,6 @@ public class FirstLaunch extends AppCompatActivity {
         String birthDate = (((EditText) findViewById(R.id.age)).getText().toString());
         String height = ((EditText) findViewById(R.id.height)).getText().toString();
         String weight = ((EditText) findViewById(R.id.weight)).getText().toString();
-
         longTermIllness = ((EditText) findViewById(R.id.editTextLongTermIllness)).getText().toString();
 
         if(!birthDate.isEmpty()){
@@ -78,42 +77,41 @@ public class FirstLaunch extends AppCompatActivity {
             year = Integer.parseInt(splitBirthDate[2]);
         }
 
-        //Check if any of the required fields is empty.
-        if(longTermIllness.isEmpty()){
-            longTermIllness = "Ei pitkäaikaissairauksia.";
-        }
-
-        if(TextUtils.isEmpty(firstName)) {
-            editTextFirstName.setError("Pakollinen kenttä");
-        }
-
-        if(TextUtils.isEmpty(lastName)) {
-            editTextLastName.setError("Pakollinen kenttä");
-        }
-
-        if(TextUtils.isEmpty(birthDate)) {
-            editTextAge.setError("Pakollinen kenttä");
-        }
-
-        if(TextUtils.isEmpty(height)) {
-            editTextHeight.setError("Pakollinen kenttä");
-        }
-
-        if(TextUtils.isEmpty(weight)) {
-            editTextWeight.setError("Pakollinen kenttä");
-        }
-
         if(!firstName.isEmpty() && !lastName.isEmpty() && !height.isEmpty() && !weight.isEmpty() && date != 0 && month != 0 && year != 0) {
-            AsyncTask.execute(() -> {
-                User user = new User(firstName, lastName, new Date(year, month, date), Integer.parseInt(height), Integer.parseInt(weight), longTermIllness);
-                this.db.userDao().insertAll(user);
-                Log.i("FirstLaunch", "Data saved");
-                Intent intent = new Intent(this, FirstLaunchDone.class);
-                startActivity(intent);
-            });
+            User user = new User(firstName, lastName, new Date(year, month, date), Integer.parseInt(height), Integer.parseInt(weight), longTermIllness);
+            this.db.userDao().insertAll(user);
+            Log.i("FirstLaunch", "Data saved");
+
+            Log.i("FirstLaunch", this.db.userDao().getAll().toString());
+
+            Intent intent = new Intent(this, FirstLaunchDone.class);
+            startActivity(intent);
         } else {
             Log.d("FirstLaunch", "A required field is null");
-            //Add a warning prompt here
+            //Check if any of the required fields is empty.
+            if(longTermIllness.isEmpty()){
+                longTermIllness = "Ei pitkäaikaissairauksia.";
+            }
+
+            if(TextUtils.isEmpty(firstName)) {
+                editTextFirstName.setError("Pakollinen kenttä");
+            }
+
+            if(TextUtils.isEmpty(lastName)) {
+                editTextLastName.setError("Pakollinen kenttä");
+            }
+
+            if(TextUtils.isEmpty(birthDate)) {
+                editTextAge.setError("Pakollinen kenttä");
+            }
+
+            if(TextUtils.isEmpty(height)) {
+                editTextHeight.setError("Pakollinen kenttä");
+            }
+
+            if(TextUtils.isEmpty(weight)) {
+                editTextWeight.setError("Pakollinen kenttä");
+            }
         }
     }
 

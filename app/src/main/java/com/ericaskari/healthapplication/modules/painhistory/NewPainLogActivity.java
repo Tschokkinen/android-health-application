@@ -37,6 +37,7 @@ public class NewPainLogActivity extends AppCompatActivity /*implements AdapterVi
     private Date currentTime; //Used to get time of pain log creation
     private String selectedPain;
     private String takenMedicine;
+    private String takenMedicineDefault = "Ei otettua lääkettä.";
     private SeekBar seekBarHowStrongIsThePain;
     private int howStrongIsThePain;
 
@@ -44,6 +45,7 @@ public class NewPainLogActivity extends AppCompatActivity /*implements AdapterVi
 
     private EditText editTextTellAboutYourFeelings;
     private String tellAboutYourFeelings;
+    private String tellAboutYourFeelingsDefault = "Kipu ei vaikuttanut mielialaan.";
 
     //Used to detect if user hasn't chosen any pain from the list.
     //Remember to update this String if String list for the dropdown menu is changed!!!
@@ -73,9 +75,9 @@ public class NewPainLogActivity extends AppCompatActivity /*implements AdapterVi
 
         textViewPainStrength.setText(String.valueOf(seekBarHowStrongIsThePain.getProgress()));
 
-        //Modified, but originally taken from https://abhiandroid.com/ui/seekbar
+        //Originally taken from https://abhiandroid.com/ui/seekbar, but modified to fit our use
         seekBarHowStrongIsThePain.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            int progressChangedValue = 0;
+            int progressChangedValue = 1;
 
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progressChangedValue = progress;
@@ -112,6 +114,9 @@ public class NewPainLogActivity extends AppCompatActivity /*implements AdapterVi
         }
     }
 
+    /**
+     *
+     */
     private void radioButtonSelection() {
         radioGroupLogPain = findViewById(R.id.radioGroupLogPain);
         radioGroupLogPain.setOnCheckedChangeListener((radioGroup, i) -> {
@@ -128,36 +133,51 @@ public class NewPainLogActivity extends AppCompatActivity /*implements AdapterVi
     private void saveData() {
         currentTime = Calendar.getInstance().getTime(); //Get time and date of log
 
-        //If user has chosen as a pin "Ei mikään näistä" (none of the above),
+        //Delete this section if drop down menu is ditched down the line
+        //If user has chosen as a pain "Ei mikään näistä" (none of the above),
         //get freely described pain before saving
+        /*
         if(selectedPain.equals(noneOfTheAbove)) {
             selectedPain = editTextDescribeOwnPain.getText().toString();
         }
+        */
+
+        selectedPain = editTextDescribeOwnPain.getText().toString();
+        howStrongIsThePain = seekBarHowStrongIsThePain.getProgress();
 
         //Check if user has logged any medicine. Otherwise set default text
         if(!editTextMedicineTakenForThePain.getText().toString().isEmpty()) {
             takenMedicine = editTextMedicineTakenForThePain.getText().toString();
         } else {
-            takenMedicine = "Ei otettua lääkettä.";
+            takenMedicine = takenMedicineDefault;
         }
 
         tellAboutYourFeelings = editTextTellAboutYourFeelings.getText().toString();
+
+        if(tellAboutYourFeelings.isEmpty()) {
+            tellAboutYourFeelings = tellAboutYourFeelingsDefault;
+        }
 
         //Log.i("Pain", String.valueOf(howStrongIsThePain));
 
         //Values to save to Room are listed here (description => variable name and type):
         //Time and date => currentTime (Date)
         //Type of pain => selectedPain (String)
+        //Description => WHAT VALUE DO WE WANT HERE OR IS THIS REQUIRED AT ALL?
         //Has medicine been taken => takenMedicine (String)
         //How strong is the pain => howStrongIsThePain (Int)
-        AsyncTask.execute(() -> {
+        //Mood because of the pain => tellAboutYourFeelings (String);
+        if(!selectedPain.isEmpty())
+        {
             PainLog painLog = new PainLog(currentTime, selectedPain, "Default description: what do we ask here?", takenMedicine, howStrongIsThePain, tellAboutYourFeelings);
-
             this.db.painLogDao().insertAll(painLog);
+
+            Log.i("PainLog", this.db.painLogDao().getAll().toString());
 
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-        });
+        }
+
     }
 
     //Delete code below if drop down menu is ditched down the line

@@ -12,18 +12,20 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/editTextDescribeOwnPain"
+            android:id="@+id/editTextDescription"
             android:layout_width="376dp"
             android:layout_height="45dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
             android:ems="10"
             android:gravity="start|top"
             android:hint="@string/describe_the_pain"
             android:inputType="textMultiLine"
             android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/textView6"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/selectPainSpinner" />
 
         <RadioGroup
             android:id="@+id/radioGroupLogPain"
@@ -93,7 +95,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/how_strong_is_the_pain"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextDescribeOwnPain" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextDescription" />
 
         <SeekBar
             android:id="@+id/seekBarHowStrongIsThePain"
@@ -141,6 +143,26 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewHowDoesThePainAffect" />
+
+        <Spinner
+            android:id="@+id/selectPainSpinner"
+            android:layout_width="286dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextDescription"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pickAPain" />
+
+        <TextView
+            android:id="@+id/pickAPain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/where_is_the_pain"
+            app:layout_constraintBottom_toTopOf="@+id/selectPainSpinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

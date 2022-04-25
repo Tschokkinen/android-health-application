@@ -1,7 +1,6 @@
 package com.ericaskari.healthapplication.modules.painhistory;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,7 +17,6 @@ import androidx.room.Room;
 
 import com.ericaskari.healthapplication.MainActivity;
 import com.ericaskari.healthapplication.R;
-import com.ericaskari.healthapplication.databinding.NewPainLogBinding;
 import com.ericaskari.healthapplication.models.PainLog;
 import com.ericaskari.healthapplication.services.AppDatabase;
 
@@ -29,13 +27,15 @@ import java.util.Date;
  * @author Gavril Tschokkinen
  */
 
-public class NewPainLogActivity extends AppCompatActivity /*implements AdapterView.OnItemSelectedListener*/ {
+public class NewPainLogActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     AppDatabase db;
 
     private NewPainLogBinding NewPainLogBinding;
     private Spinner selectPainSpinner; //Used to display a list of pains
     private Date currentTime; //Used to get time of pain log creation
     private String selectedPain;
+    private String description;
+    private String descriptionDefault = "Ei kuvausta";
     private String takenMedicine;
     private String takenMedicineDefault = "Ei otettua lääkettä.";
     private SeekBar seekBarHowStrongIsThePain;
@@ -50,7 +50,7 @@ public class NewPainLogActivity extends AppCompatActivity /*implements AdapterVi
     //Used to detect if user hasn't chosen any pain from the list.
     //Remember to update this String if String list for the dropdown menu is changed!!!
     private String noneOfTheAbove = "Ei mikään näistä";
-    private EditText editTextDescribeOwnPain;
+    private EditText editTextDescription;
     private EditText editTextMedicineTakenForThePain;
     private RadioGroup radioGroupLogPain;
 
@@ -62,7 +62,7 @@ public class NewPainLogActivity extends AppCompatActivity /*implements AdapterVi
 
         this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").allowMainThreadQueries().build();
 
-        editTextDescribeOwnPain = findViewById(R.id.editTextDescribeOwnPain);
+        editTextDescription = findViewById(R.id.editTextDescription);
         editTextMedicineTakenForThePain = findViewById(R.id.editTextMedicineTaken);
         textViewPainStrength = findViewById(R.id.textViewPainStrenght);
         editTextTellAboutYourFeelings = findViewById(R.id.editTextTellAboutYourFeelings);
@@ -93,15 +93,13 @@ public class NewPainLogActivity extends AppCompatActivity /*implements AdapterVi
             }
         });
 
-        //Delete code below if drop down menu is ditched down the line!
-        /*
+        //Drop down list (spinner)
         selectPainSpinner = findViewById(R.id.selectPainSpinner);
         selectPainSpinner.setOnItemSelectedListener(this);
         //https://developer.android.com/guide/topics/ui/controls/spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.list_of_pains, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         selectPainSpinner.setAdapter(adapter);
-         */
     }
 
     public void buttonManager(View v) {
@@ -110,7 +108,7 @@ public class NewPainLogActivity extends AppCompatActivity /*implements AdapterVi
             radioButtonSelection();
         } else if (v == findViewById(R.id.buttonLogPainReady)) {
             Log.i("Button", "Button clicked");
-            saveData();
+            gatherData();
         }
     }
 
@@ -130,19 +128,14 @@ public class NewPainLogActivity extends AppCompatActivity /*implements AdapterVi
         });
     }
 
-    private void saveData() {
+    private void gatherData() {
         currentTime = Calendar.getInstance().getTime(); //Get time and date of log
 
-        //Delete this section if drop down menu is ditched down the line
-        //If user has chosen as a pain "Ei mikään näistä" (none of the above),
-        //get freely described pain before saving
-        /*
-        if(selectedPain.equals(noneOfTheAbove)) {
-            selectedPain = editTextDescribeOwnPain.getText().toString();
-        }
-        */
+        description = editTextDescription.getText().toString();
 
-        selectedPain = editTextDescribeOwnPain.getText().toString();
+        if(description.isEmpty()) {
+            description = descriptionDefault;
+        }
         howStrongIsThePain = seekBarHowStrongIsThePain.getProgress();
 
         //Check if user has logged any medicine. Otherwise set default text
@@ -160,43 +153,56 @@ public class NewPainLogActivity extends AppCompatActivity /*implements AdapterVi
 
         //Log.i("Pain", String.valueOf(howStrongIsThePain));
 
-        //Values to save to Room are listed here (description => variable name and type):
-        //Time and date => currentTime (Date)
-        //Type of pain => selectedPain (String)
-        //Description => WHAT VALUE DO WE WANT HERE OR IS THIS REQUIRED AT ALL?
-        //Has medicine been taken => takenMedicine (String)
-        //How strong is the pain => howStrongIsThePain (Int)
-        //Mood because of the pain => tellAboutYourFeelings (String);
-        if(!selectedPain.isEmpty())
-        {
-            PainLog painLog = new PainLog(currentTime, selectedPain, "Default description: what do we ask here?", takenMedicine, howStrongIsThePain, tellAboutYourFeelings);
-            this.db.painLogDao().insertAll(painLog);
-
-            Log.i("PainLog", this.db.painLogDao().getAll().toString());
-
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        }
-
+        //Send gathered data for saving
+        saveData(currentTime, selectedPain, description, takenMedicine, howStrongIsThePain, tellAboutYourFeelings);
     }
 
-    //Delete code below if drop down menu is ditched down the line
-    /*
+    /**
+     *
+     * @param currentTime
+     * @param selectedPain
+     * @param description
+     * @param takenMedicine
+     * @param howStrongIsThePain
+     * @param tellAboutYourFeelings
+     */
+    private void saveData(Date currentTime, String selectedPain, String description, String takenMedicine, int howStrongIsThePain, String tellAboutYourFeelings) {
+        PainLog painLog = new PainLog(currentTime, selectedPain, description, takenMedicine, howStrongIsThePain, tellAboutYourFeelings);
+        this.db.painLogDao().insertAll(painLog);
+
+        Log.i("PainLog", this.db.painLogDao().getAll().toString());
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     *
+     * @param adapterView
+     * @param view
+     * @param i
+     * @param l
+     */
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         selectedPain = adapterView.getItemAtPosition(i).toString();
         Log.i("onItemSelected", adapterView.getItemAtPosition(i).toString());
 
+        /*
         if(selectedPain.equals(noneOfTheAbove)) {
             editTextDescribeOwnPain.setVisibility(View.VISIBLE);
         } else {
             editTextDescribeOwnPain.setVisibility(View.INVISIBLE);
         }
+        */
     }
 
+    /**
+     *
+     * @param adapterView
+     */
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
-     */
 }

@@ -45,7 +45,7 @@
 
     <!-- NewPainLog -->
     <string name="where_is_the_pain">Mihin sattuu?</string>
-    <string name="describe_the_pain">Kerro kivusta...</string>
+    <string name="describe_the_pain">Kerro tarkemmin kivusta...</string>
 
     <string-array name="list_of_pains">
         <item>Niska</item>

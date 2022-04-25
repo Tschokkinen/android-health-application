@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").allowMainThreadQueries().build();
 
-        AsyncTask.execute(() -> {
             //  Get all users from Database
             List<User> users = this.db.userDao().getAll();
 
@@ -46,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 setContentView(activityMainBinding.getRoot());
             }
-        });
 
         activityMainBinding.painHistoryButton.setOnClickListener(this::onPainHistoryButtonClick);
         activityMainBinding.medicinesButton.setOnClickListener(this::onMedicinesButtonClick);

@@ -13,12 +13,20 @@ import android.view.View;
 
 public class Hello extends AppCompatActivity {
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hello);
     }
 
+    /**
+     * Button manager for the activity
+     * @param v
+     */
     public void buttonManager(View v){
         if(v == findViewById(R.id.nextButtonHello)){
             Intent intent = new Intent(this, FirstLaunch.class);

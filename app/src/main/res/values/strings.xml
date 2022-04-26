@@ -12,7 +12,8 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <!-- First launch -->
-    <string name="user_data_message">Ensin tarvitsemme hieman tietoa sinusta :)</string>
+    <string name="user_data_message">Hei, \n\nja tervetuloa käyttämään Mihin sattuu? -sovellusta.\nEnsialkuun tarvitsemme hieman tietoa sinusta.</string>
+    <string name="disclaimer">Vastuuvapauslauseke:\nSovellusta ei ole tarkoitettu lääkinnälliseen käyttöön vaan oman hyvinvoinnin omaehtoiseen seuraamiseen. Keskustele aina lääkinnällisistä asioista sekä kivusta lääkärisi tai terveydenhuollon edustajan kanssa.</string>
     <string name="user_data_nextButton">Seuraava</string>
     <string name="user_data_backButton">Takaisin</string>
     <string name="user_data_doneButton">Valmis</string>
@@ -31,7 +32,7 @@
     <string name="radio_info_no">Ei</string>
     <string name="radio_button_yes">Kyllä</string>
     <string name="radio_button_no">Ei</string>
-    <string name="user_data_text_sent">Kiitos! Tietosi on tallennettu.</string>
+    <string name="user_data_text_sent">Kiitos! Tietosi on tallennettu. Voit nyt alkaa käyttää sovellusta.</string>
     <!--First Launch End -->
 
     <string name="main_activity_pain_history">Kipuhistoria</string>

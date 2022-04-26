@@ -13,12 +13,20 @@ import android.view.View;
 
 public class FirstLaunchDone extends AppCompatActivity {
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_launch_done);
     }
 
+    /**
+     * Button manager for the activity
+     * @param v
+     */
     public void buttonManager(View v) {
         if(v == findViewById(R.id.nextButtonFirstLaunchFinish)) {
             Intent intent = new Intent(this, MainActivity.class);

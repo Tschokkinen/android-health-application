@@ -29,6 +29,8 @@ import java.util.Date;
 
 public class FirstLaunch extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     AppDatabase db;
+
+    //View components
     private RadioGroup radioGroup;
     private EditText editTextLongTermIllness;
     private EditText editTextFirstName;
@@ -37,16 +39,22 @@ public class FirstLaunch extends AppCompatActivity implements DatePickerDialog.O
     private EditText editTextHeight;
     private EditText editTextWeight;
 
+    //String variables
     private String firstName;
     private String lastName;
     private String birthDateText;
     private String height;
     private String weight;
-
     private String longTermIllness;
     private String longTermIllnessDefault = "Ei pitkäaikaissairauksia";
+
+    //Birth date
     private Date birthDate;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +66,7 @@ public class FirstLaunch extends AppCompatActivity implements DatePickerDialog.O
 
         birthDate = new Date();
 
+        //Get all EditTexts and TextViews
         editTextFirstName = findViewById(R.id.firstName);
         editTextLastName = findViewById(R.id.lastName);
         textViewBirthDate = findViewById(R.id.textViewBirthDate);
@@ -66,9 +75,13 @@ public class FirstLaunch extends AppCompatActivity implements DatePickerDialog.O
 
     }
 
+    /**
+     * Manages all of the button clicks on the activity
+     * @param v
+     */
     public void buttonManager(View v) {
         if(v == findViewById(R.id.nextButtonFirstLaunch)) {
-            saveData();
+            gatherData();
         } else if (v == findViewById(R.id.radioGroup)) {
             radioButtonSelection();
         } else if(v == findViewById(R.id.buttonPickBirthdateFirstLaunch)) {
@@ -82,17 +95,17 @@ public class FirstLaunch extends AppCompatActivity implements DatePickerDialog.O
      */
     private void showDatePicker(Date defaultDate) {
         Log.i("DatePicker", "showDatePicker()");
-        //  Default date for date picker
+        //Default date for date picker
         DatePicker datePicker = new DatePicker(defaultDate);
-        //  Show date picker
+        //Show date picker
         datePicker.show(getSupportFragmentManager(), "DATE PICK");
     }
 
-
     /**
-     *
+     * Gather the user input and send it to saveData() if everything checks out.
      */
-    private void saveData() {
+    private void gatherData() {
+        //Get values from view components and assign values to corresponding variables
         firstName = ((EditText) findViewById(R.id.firstName)).getText().toString();
         lastName = ((EditText) findViewById(R.id.lastName)).getText().toString();
         birthDateText = (((TextView) findViewById(R.id.textViewBirthDate)).getText().toString());
@@ -100,33 +113,46 @@ public class FirstLaunch extends AppCompatActivity implements DatePickerDialog.O
         weight = ((EditText) findViewById(R.id.weight)).getText().toString();
         longTermIllness = ((EditText) findViewById(R.id.editTextLongTermIllness)).getText().toString();
 
+        //If user doesn't have any long term illnesses assign a default value here
         if(longTermIllness.isEmpty()) {
             longTermIllness = longTermIllnessDefault;
         }
 
+        //If required fields are not empty, saveData()
         if(!firstName.isEmpty() && !lastName.isEmpty() && !height.isEmpty() && !weight.isEmpty() && !birthDateText.equals("Valitse syntymäpäivä")) {
-            User user = new User(firstName, lastName, birthDate, Integer.parseInt(height), Integer.parseInt(weight), longTermIllness);
-            this.db.userDao().insertAll(user);
-            Log.i("FirstLaunch", "Data saved");
-
-            Log.i("FirstLaunch", this.db.userDao().getAll().toString());
-
-            Intent intent = new Intent(this, FirstLaunchDone.class);
-            startActivity(intent);
+            saveData();
         } else {
-            requiredFieldEmpty();
+            requiredFieldEmpty(); //Call if any of the input fields is empty.
         }
     }
 
     /**
-     *
+     * Saves the user input to the database
+     */
+    private void saveData() {
+        User user = new User(firstName, lastName, birthDate, Integer.parseInt(height), Integer.parseInt(weight), longTermIllness);
+        this.db.userDao().insertAll(user);
+        Log.i("FirstLaunch", "Data saved");
+
+        Log.i("FirstLaunch", this.db.userDao().getAll().toString());
+
+        //Go to verify screen
+        Intent intent = new Intent(this, FirstLaunchDone.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Used to check if any of the required fields is empty.
      */
     private void requiredFieldEmpty() {
         Log.d("FirstLaunch", "A required field is null");
+
         //Check if any of the required fields is empty.
+        /*
         if(longTermIllness.isEmpty()){
-            longTermIllness = "Ei pitkäaikaissairauksia.";
+            longTermIllness = longTermIllnessDefault;
         }
+        */
 
         if(TextUtils.isEmpty(firstName)) {
             editTextFirstName.setError("Pakollinen kenttä");
@@ -135,11 +161,11 @@ public class FirstLaunch extends AppCompatActivity implements DatePickerDialog.O
         if(TextUtils.isEmpty(lastName)) {
             editTextLastName.setError("Pakollinen kenttä");
         }
-/*
+        /*
         if(TextUtils.isEmpty(birthDateText)) {
             textViewBirthDate.setError("Pakollinen kenttä");
         }
-*/
+        */
         if(TextUtils.isEmpty(height)) {
             editTextHeight.setError("Pakollinen kenttä");
         }
@@ -150,7 +176,7 @@ public class FirstLaunch extends AppCompatActivity implements DatePickerDialog.O
     }
 
     /**
-     *
+     * See which radio button is being selected
      */
     private void radioButtonSelection(){
         radioGroup = findViewById(R.id.radioGroup);
@@ -164,6 +190,7 @@ public class FirstLaunch extends AppCompatActivity implements DatePickerDialog.O
                     break;
                 case R.id.radioNo:
                     editTextLongTermIllness.setVisibility(View.INVISIBLE);
+                    //Log.d("Radio", "Radio no");
             }
         });
     }

@@ -31,6 +31,7 @@ public class FirstLaunchDone extends AppCompatActivity {
         if(v == findViewById(R.id.nextButtonFirstLaunchFinish)) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 }

@@ -189,6 +189,7 @@ public class NewPainLogActivity extends AppCompatActivity implements AdapterView
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     /**

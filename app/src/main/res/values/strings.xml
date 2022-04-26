@@ -12,7 +12,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <!-- First launch -->
-    <string name="user_data_message">Hei, \n\nja tervetuloa käyttämään Mihin sattuu? -sovellusta.\nEnsialkuun tarvitsemme hieman tietoa sinusta.</string>
+    <string name="user_data_message">Hei, \n\nja tervetuloa käyttämään Mihin sattuu? -sovellusta.\n\nSovelluksen avulla voit seurata hyvinvointiasi koettujen kipujen näkökulmasta. Ennen sovelluksen käyttöönottoa tarvitsemme hieman tietoa sinusta.</string>
     <string name="disclaimer">Vastuuvapauslauseke:\nSovellusta ei ole tarkoitettu lääkinnälliseen käyttöön vaan oman hyvinvoinnin omaehtoiseen seuraamiseen. Keskustele aina lääkinnällisistä asioista sekä kivusta lääkärisi tai terveydenhuollon edustajan kanssa.</string>
     <string name="user_data_nextButton">Seuraava</string>
     <string name="user_data_backButton">Takaisin</string>
@@ -46,7 +46,7 @@
 
     <!-- NewPainLog -->
     <string name="where_is_the_pain">Mihin sattuu?</string>
-    <string name="describe_the_pain">Kerro tarkemmin kivusta...</string>
+    <string name="describe_the_pain">Voit kertoa tarkemmin kivusta tässä...</string>
 
     <string-array name="list_of_pains">
         <item>Niska</item>
@@ -62,7 +62,7 @@
     <string name="button_ready">Valmis</string>
     <string name="how_strong_is_the_pain">Kuinka kova kipu on asteikolla 1-10</string>
     <string name="how_does_the_pain_affect">Miten kipu vaikuttaa mielialaasi?</string>
-    <string name="tell_about_your_feelings">Kerro...</string>
+    <string name="tell_about_your_feelings">Voit kertoa mielialastasi vapaasti tässä...</string>
     <!--NewPainLog End -->
 
 </resources>

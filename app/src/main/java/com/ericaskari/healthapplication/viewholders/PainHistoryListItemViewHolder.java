@@ -1,13 +1,21 @@
 package com.ericaskari.healthapplication.viewholders;
 
+import android.content.res.Resources;
+import android.view.View;
+
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ericaskari.healthapplication.R;
 import com.ericaskari.healthapplication.adapters.PainLogListRecyclerViewAdapter;
 import com.ericaskari.healthapplication.databinding.PainHistoryListItemBinding;
 import com.ericaskari.healthapplication.models.PainLog;
 
 import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.time.LocalDateTime;
 
 /**
  * ViewHolder to inject data to {@link PainHistoryListItemBinding}
@@ -23,15 +31,30 @@ public class PainHistoryListItemViewHolder extends RecyclerView.ViewHolder {
 
     /**
      * Here we update UI values.
+     * @param resources just to get some values from strings.xml
+     * @param painLog to get values for UI
      */
-    public void setViewHolderData(PainLog painLog) {
-        this.binding.title.setText(painLog.bodyPart);
-        this.binding.description.setText(painLog.description);
+    public void setViewHolderData(PainLog painLog, Resources resources) {
+        this.binding.titleValue.setText(painLog.bodyPart);
+        this.binding.descriptionValue.setText(painLog.description);
 
-        Locale loc = new Locale("fi", "FI");
-        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT, loc);
-        String date = dateFormat.format(painLog.createdAt);
+        LocalDateTime createdAtLocalDateTime = painLog.createdAt.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        DateTimeFormatter createdAtFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+        String createdAtFormatted = createdAtLocalDateTime.format(createdAtFormatter);
 
-        this.binding.addedDate.setText(date);
+        this.binding.createdAtValue.setText(createdAtFormatted);
+
+        this.binding.painStrengthValue.setText(String.format("%d/10", painLog.painStrength));
+
+        this.binding.medicinesTakenText.setText(
+                resources.getString(
+                        painLog.medicineTaken.equals("")
+                                ? R.string.no_medicine_is_taken
+                                : R.string.taken_medicine
+                )
+        );
+
+        this.binding.medicinesTakenValue.setText(painLog.medicineTaken);
+        this.binding.howMedicineAffectedValue.setText(painLog.tellAboutYourFeelings);
     }
 }

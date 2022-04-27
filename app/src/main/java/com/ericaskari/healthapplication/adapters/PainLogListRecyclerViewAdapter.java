@@ -44,7 +44,7 @@ public class PainLogListRecyclerViewAdapter extends RecyclerView.Adapter<PainHis
      */
     @Override
     public void onBindViewHolder(PainHistoryListItemViewHolder holder, int position) {
-        holder.setViewHolderData(list.get(position));
+        holder.setViewHolderData(list.get(position), context.getResources());
     }
 
     @Override

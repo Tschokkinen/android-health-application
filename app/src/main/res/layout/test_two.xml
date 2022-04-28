@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Author: Gavril Tschokkinen -->
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,11 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="0dp">
+        android:padding="10dp">
 
 
         <LinearLayout
-            android:background="@android:color/holo_green_light"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:orientation="vertical">
@@ -35,13 +33,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="84dp"
             android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textViewFirstName"
@@ -53,7 +46,6 @@
                 app:layout_constraintBottom_toTopOf="@+id/firstName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/userDataTitle" />
-            </LinearLayout>
 
             <EditText
                 android:id="@+id/firstName"
@@ -71,13 +63,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="91dp"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
@@ -88,7 +76,6 @@
                 app:layout_constraintBottom_toTopOf="@+id/lastName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/firstName" />
-            </LinearLayout>
 
             <EditText
                 android:id="@+id/lastName"
@@ -103,22 +90,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />
         </LinearLayout>
 
-    <LinearLayout
-        android:background="@android:color/holo_green_light"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:orientation="vertical">
-    </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="97dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView10"
@@ -130,11 +105,10 @@
                 app:layout_constraintBottom_toTopOf="@+id/textViewBirthDate"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lastName" />
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="67dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -167,15 +141,8 @@
         </LinearLayout>
 
         <LinearLayout
-            android:background="@android:color/holo_green_light"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:orientation="vertical">
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="68dp"
             android:orientation="horizontal">
 
             <TextView
@@ -205,7 +172,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="63dp"
+            android:layout_height="62dp"
             android:orientation="horizontal">
 
             <TextView
@@ -232,33 +199,8 @@
         </LinearLayout>
 
         <LinearLayout
-            android:background="@android:color/holo_green_light"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:orientation="vertical">
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="@string/user_data_long_term_illness"
-                app:layout_constraintBottom_toTopOf="@+id/radioGroup"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weight" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="115dp"
+            android:layout_height="184dp"
             android:orientation="horizontal">
 
             <RadioGroup

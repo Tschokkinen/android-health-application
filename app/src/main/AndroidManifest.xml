@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthApplication">
         <activity
-            android:name=".FirstLaunchDone"
+            android:name=".modules.firstLaunch.FirstLaunchDoneActivity"
             android:exported="false" />
         <activity
             android:name=".modules.painhistory.PainHistoryActivity"
@@ -37,7 +37,7 @@
             android:exported="false"
             android:label="@string/main_activity_plus" />
         <activity
-            android:name=".Hello"
+            android:name=".modules.firstLaunch.HelloActivity"
             android:exported="false"
             android:label="Tervetuloa" />
         <activity
@@ -45,7 +45,7 @@
             android:exported="false"
             android:label="Kirjaa kipu" />
         <activity
-            android:name=".FirstLaunch"
+            android:name=".modules.firstLaunch.FirstLaunchActivity"
             android:exported="false"
             android:label="@string/first_launch_activity_name" />
         <activity

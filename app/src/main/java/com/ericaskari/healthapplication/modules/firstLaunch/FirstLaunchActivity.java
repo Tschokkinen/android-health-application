@@ -1,4 +1,4 @@
-package com.ericaskari.healthapplication;
+package com.ericaskari.healthapplication.modules.firstLaunch;
 
 import static android.content.ContentValues.TAG;
 
@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.ericaskari.healthapplication.R;
 import com.ericaskari.healthapplication.fragments.DatePicker;
 import com.ericaskari.healthapplication.models.User;
 import com.ericaskari.healthapplication.services.AppDatabase;
@@ -27,7 +28,7 @@ import java.util.Date;
  * Activity for user data collection during the first launch of the application.
  */
 
-public class FirstLaunch extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class FirstLaunchActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     AppDatabase db;
 
     //View components
@@ -137,7 +138,7 @@ public class FirstLaunch extends AppCompatActivity implements DatePickerDialog.O
         Log.i("FirstLaunch", this.db.userDao().getAll().toString());
 
         //Go to verify screen
-        Intent intent = new Intent(this, FirstLaunchDone.class);
+        Intent intent = new Intent(this, FirstLaunchDoneActivity.class);
         startActivity(intent);
     }
 

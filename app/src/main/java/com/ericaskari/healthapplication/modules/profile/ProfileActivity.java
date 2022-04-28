@@ -3,7 +3,6 @@ package com.ericaskari.healthapplication.modules.profile;
 import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -12,7 +11,6 @@ import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
-import com.ericaskari.healthapplication.Hello;
 import com.ericaskari.healthapplication.R;
 import com.ericaskari.healthapplication.databinding.ProfileBinding;
 import com.ericaskari.healthapplication.models.User;
@@ -20,7 +18,6 @@ import com.ericaskari.healthapplication.services.AppDatabase;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 
 /**

@@ -15,6 +15,7 @@ import com.ericaskari.healthapplication.viewholders.HomePageButtonListItemViewHo
 import java.util.List;
 
 /**
+ * @author Mohammad Askari (Eric)
  * RecyclerViewAdapter to handle list view.
  * It will use {@link HomePageButtonListItemViewHolder} to inject data into
  * {@link ActivityMainCardItemBinding}

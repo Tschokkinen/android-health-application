@@ -11,7 +11,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
-import com.ericaskari.healthapplication.FirstLaunch;
+import com.ericaskari.healthapplication.modules.firstLaunch.FirstLaunchActivity;
 import com.ericaskari.healthapplication.databinding.SettingsBinding;
 import com.ericaskari.healthapplication.models.User;
 import com.ericaskari.healthapplication.services.AppDatabase;
@@ -42,7 +42,7 @@ public class SettingsActivity extends AppCompatActivity {
                 this.db.userDao().delete(user);
             }
             
-            Intent intent = new Intent(this, FirstLaunch.class);
+            Intent intent = new Intent(this, FirstLaunchActivity.class);
             startActivity(intent);
         });
     }

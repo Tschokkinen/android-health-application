@@ -3,17 +3,15 @@ package com.ericaskari.healthapplication;
 import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 
 import com.ericaskari.healthapplication.adapters.HomePageListRecyclerViewAdapter;
 import com.ericaskari.healthapplication.interfaces.OnHomePageItemClickListener;
 import com.ericaskari.healthapplication.models.HomePageButton;
 import com.ericaskari.healthapplication.models.User;
+import com.ericaskari.healthapplication.modules.firstLaunch.HelloActivity;
 import com.ericaskari.healthapplication.modules.medicines.MedicinesActivity;
 import com.ericaskari.healthapplication.modules.painhistory.NewPainLogActivity;
 import com.ericaskari.healthapplication.modules.painhistory.PainHistoryActivity;
@@ -21,12 +19,9 @@ import com.ericaskari.healthapplication.modules.profile.ProfileActivity;
 import com.ericaskari.healthapplication.modules.settings.SettingsActivity;
 import com.ericaskari.healthapplication.services.AppDatabase;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import com.ericaskari.healthapplication.databinding.ActivityMainBinding;
@@ -50,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements OnHomePageItemCli
 
         //  Check if first init activity is needed.
         if (users.toArray().length == 0) {
-            Intent intent = new Intent(this, Hello.class);
+            Intent intent = new Intent(this, HelloActivity.class);
             startActivity(intent);
         } else {
             setContentView(activityMainBinding.getRoot());

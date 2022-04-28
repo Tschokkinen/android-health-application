@@ -1,4 +1,4 @@
-package com.ericaskari.healthapplication;
+package com.ericaskari.healthapplication.modules.firstLaunch;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.ericaskari.healthapplication.R;
+
 /**
  * @author Gavril Tschokkinen
- * Used to indicate that user data on FirstLaunch activity has been saved successfully.
+ * The initial activity run when the application is booted for the first time.
  */
 
-public class FirstLaunchDone extends AppCompatActivity {
+public class HelloActivity extends AppCompatActivity {
 
     /**
      *
@@ -20,16 +22,16 @@ public class FirstLaunchDone extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first_launch_done);
+        setContentView(R.layout.activity_hello);
     }
 
     /**
      * Button manager for the activity
      * @param v
      */
-    public void buttonManager(View v) {
-        if(v == findViewById(R.id.nextButtonFirstLaunchFinish)) {
-            Intent intent = new Intent(this, MainActivity.class);
+    public void buttonManager(View v){
+        if(v == findViewById(R.id.nextButtonHello)){
+            Intent intent = new Intent(this, FirstLaunchActivity.class);
             startActivity(intent);
         }
     }

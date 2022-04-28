@@ -7,6 +7,7 @@ import java.util.Date;
 /**
  * This class is for converting Date to Unix time number format for saving in database
  * And will convert back when fetching it from database
+ * @author Mohammad Askari (Eric)
  */
 public class Converters {
     @TypeConverter

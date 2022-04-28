@@ -9,6 +9,9 @@ import com.ericaskari.healthapplication.models.PainLog;
 
 import java.util.List;
 
+/**
+ * Room Database PainLog Data Access Object
+ */
 @Dao
 public interface PainLogDao {
     @Query("SELECT * FROM PainLog")

@@ -1,6 +1,5 @@
 package com.ericaskari.healthapplication.daos;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -11,6 +10,9 @@ import com.ericaskari.healthapplication.models.User;
 
 import java.util.List;
 
+/**
+ * Room Database User Data Access Object
+ */
 @Dao
 public interface UserDao {
     @Query("SELECT * FROM User")

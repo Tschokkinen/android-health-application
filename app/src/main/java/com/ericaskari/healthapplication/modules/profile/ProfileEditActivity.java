@@ -22,6 +22,10 @@ import com.ericaskari.healthapplication.services.AppDatabase;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ *
+ * @author Mohammad Askari (Eric)
+ */
 public class ProfileEditActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     private ProfileEditBinding binding;
     private AppDatabase db;

@@ -22,17 +22,31 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+
+/**
+ * @author Mohammad Askari (Eric)
+ *
+ */
 public class ProfileActivity extends AppCompatActivity {
+    //  View reference
     private ProfileBinding binding;
+
+    //  Database reference
     private AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //  Save view reference
         this.binding = ProfileBinding.inflate(getLayoutInflater());
+
+        //  Save Database reference
         this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").allowMainThreadQueries().build();
 
+        //  Show User the view
         setContentView(binding.getRoot());
+
         updateUi();
     }
 
@@ -99,7 +113,10 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void updateUi() {
+        //  Get User fro Database to refresh data
         User user = this.db.userDao().getAll().get(0);
+
+        //  Update Ui data
         this.binding.firstnameValue.setText(user.firstName.toString());
         this.binding.lastNameValue.setText(user.lastName.toString());
         this.updateBirthdateUiValue(user.birthDate);

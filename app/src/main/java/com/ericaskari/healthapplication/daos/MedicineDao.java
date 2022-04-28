@@ -9,6 +9,9 @@ import com.ericaskari.healthapplication.models.Medicine;
 
 import java.util.List;
 
+/**
+ * Room Database Medicine Data Access Object
+ */
 @Dao
 public interface MedicineDao {
     @Query("SELECT * FROM Medicine")

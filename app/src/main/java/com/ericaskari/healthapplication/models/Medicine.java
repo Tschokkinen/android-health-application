@@ -10,6 +10,9 @@ import com.ericaskari.healthapplication.enums.RepeatTypeEnum;
 import java.time.DayOfWeek;
 import java.util.Date;
 
+/**
+ * Database Model for Medicine
+ */
 @Entity
 public class Medicine {
     @NonNull

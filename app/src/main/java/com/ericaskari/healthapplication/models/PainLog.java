@@ -8,6 +8,9 @@ import androidx.room.PrimaryKey;
 import java.util.Date;
 import java.util.UUID;
 
+/**
+ * Database Model for Pain
+ */
 @Entity
 public class PainLog {
     @NonNull

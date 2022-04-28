@@ -11,7 +11,10 @@ import com.ericaskari.healthapplication.models.Medicine;
 import com.ericaskari.healthapplication.models.PainLog;
 import com.ericaskari.healthapplication.models.User;
 
-
+/**
+ * Room Database Access point
+ * @author Mohammad Askari (Eric)
+ */
 @Database(
         entities = {User.class, Medicine.class, PainLog.class},
         version = 1

@@ -31,7 +31,6 @@ public class Hello extends AppCompatActivity {
         if(v == findViewById(R.id.nextButtonHello)){
             Intent intent = new Intent(this, FirstLaunch.class);
             startActivity(intent);
-            finish();
         }
     }
 }

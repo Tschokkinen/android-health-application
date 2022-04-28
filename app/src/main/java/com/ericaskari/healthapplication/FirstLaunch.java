@@ -139,7 +139,6 @@ public class FirstLaunch extends AppCompatActivity implements DatePickerDialog.O
         //Go to verify screen
         Intent intent = new Intent(this, FirstLaunchDone.class);
         startActivity(intent);
-        finish();
     }
 
     /**

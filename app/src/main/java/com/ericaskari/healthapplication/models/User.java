@@ -9,6 +9,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Database Model for User
+ */
 @Entity
 public class User {
     @NonNull

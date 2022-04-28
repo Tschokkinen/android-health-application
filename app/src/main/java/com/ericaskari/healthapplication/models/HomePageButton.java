@@ -1,5 +1,9 @@
 package com.ericaskari.healthapplication.models;
 
+/**
+ * to pass data into {@link com.ericaskari.healthapplication.viewholders.PainHistoryListItemViewHolder}
+ * NOT A DB MODEL
+ */
 public class HomePageButton {
 
     private Integer textResourceId;

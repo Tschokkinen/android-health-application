@@ -8,9 +8,9 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
-import com.ericaskari.healthapplication.FirstLaunch;
 import com.ericaskari.healthapplication.databinding.SettingsBinding;
 import com.ericaskari.healthapplication.models.User;
+import com.ericaskari.healthapplication.modules.firstLaunch.FirstLaunchActivity;
 import com.ericaskari.healthapplication.services.AppDatabase;
 
 import java.util.List;
@@ -56,7 +56,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         //  Go to first launch
-        Intent intent = new Intent(this, FirstLaunch.class);
+        Intent intent = new Intent(this, FirstLaunchActivity.class);
         startActivity(intent);
     }
 }

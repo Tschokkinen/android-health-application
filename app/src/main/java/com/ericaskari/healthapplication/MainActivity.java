@@ -11,6 +11,7 @@ import com.ericaskari.healthapplication.adapters.HomePageListRecyclerViewAdapter
 import com.ericaskari.healthapplication.interfaces.OnHomePageItemClickListener;
 import com.ericaskari.healthapplication.models.HomePageButton;
 import com.ericaskari.healthapplication.models.User;
+import com.ericaskari.healthapplication.modules.firstLaunch.HelloActivity;
 import com.ericaskari.healthapplication.modules.medicines.MedicinesActivity;
 import com.ericaskari.healthapplication.modules.painhistory.NewPainLogActivity;
 import com.ericaskari.healthapplication.modules.painhistory.PainHistoryActivity;
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements OnHomePageItemCli
         boolean isFirstLaunchNeeded = users.toArray().length == 0;
 
         if (isFirstLaunchNeeded) {
-            Intent intent = new Intent(this, Hello.class);
+            Intent intent = new Intent(this, HelloActivity.class);
             startActivity(intent);
 
         } else {

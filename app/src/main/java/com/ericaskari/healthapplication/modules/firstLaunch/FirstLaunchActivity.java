@@ -61,10 +61,13 @@ public class FirstLaunchActivity extends AppCompatActivity implements DatePicker
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_launch);
 
+        //Get database
         this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").allowMainThreadQueries().build();
 
+        //Get radiobutton status
         radioButtonSelection();
 
+        //Create new Date() object
         birthDate = new Date();
 
         //Get all EditTexts and TextViews
@@ -73,7 +76,7 @@ public class FirstLaunchActivity extends AppCompatActivity implements DatePicker
         textViewBirthDate = findViewById(R.id.textViewBirthDate);
         editTextHeight = findViewById(R.id.height);
         editTextWeight = findViewById(R.id.weight);
-
+        editTextLongTermIllness = findViewById(R.id.editTextLongTermIllness);
     }
 
     /**
@@ -105,25 +108,24 @@ public class FirstLaunchActivity extends AppCompatActivity implements DatePicker
     /**
      * Gather the user input and send it to saveData() if everything checks out.
      */
+    //Gather data from the input fields and save data if everything checks out.
     private void gatherData() {
         //Get values from view components and assign values to corresponding variables
-        firstName = ((EditText) findViewById(R.id.firstName)).getText().toString();
-        lastName = ((EditText) findViewById(R.id.lastName)).getText().toString();
-        birthDateText = (((TextView) findViewById(R.id.textViewBirthDate)).getText().toString());
-        height = ((EditText) findViewById(R.id.height)).getText().toString();
-        weight = ((EditText) findViewById(R.id.weight)).getText().toString();
-        longTermIllness = ((EditText) findViewById(R.id.editTextLongTermIllness)).getText().toString();
+        firstName = editTextFirstName.getText().toString();
+        lastName = editTextLastName.getText().toString();
+        birthDateText = textViewBirthDate.getText().toString();
+        height = editTextHeight.getText().toString();
+        weight = editTextWeight.getText().toString();
+        longTermIllness = editTextLongTermIllness.getText().toString();
 
         //If user doesn't have any long term illnesses assign a default value here
         if(longTermIllness.isEmpty()) {
             longTermIllness = longTermIllnessDefault;
         }
 
-        //If required fields are not empty, saveData()
-        if(!firstName.isEmpty() && !lastName.isEmpty() && !height.isEmpty() && !weight.isEmpty() && !birthDateText.equals("Valitse syntymäpäivä")) {
+        //If none of the required fields are not empty, saveData()
+        if(!requiredFieldEmpty()) {
             saveData();
-        } else {
-            requiredFieldEmpty(); //Call if any of the input fields is empty.
         }
     }
 
@@ -131,8 +133,12 @@ public class FirstLaunchActivity extends AppCompatActivity implements DatePicker
      * Saves the user input to the database
      */
     private void saveData() {
+        //Create a new User object
         User user = new User(firstName, lastName, birthDate, Integer.parseInt(height), Integer.parseInt(weight), longTermIllness);
+
+        //Inser created User in the database
         this.db.userDao().insertAll(user);
+
         Log.i("FirstLaunch", "Data saved");
 
         Log.i("FirstLaunch", this.db.userDao().getAll().toString());
@@ -145,40 +151,42 @@ public class FirstLaunchActivity extends AppCompatActivity implements DatePicker
     /**
      * Used to check if any of the required fields is empty.
      */
-    private void requiredFieldEmpty() {
+    //Checks if any of the required fields is empty and shows a warning sign if neccessary
+    private boolean requiredFieldEmpty() {
         Log.d("FirstLaunch", "A required field is null");
-
-        //Check if any of the required fields is empty.
-        /*
-        if(longTermIllness.isEmpty()){
-            longTermIllness = longTermIllnessDefault;
-        }
-        */
 
         if(TextUtils.isEmpty(firstName)) {
             editTextFirstName.setError("Pakollinen kenttä");
+            return true;
         }
 
         if(TextUtils.isEmpty(lastName)) {
             editTextLastName.setError("Pakollinen kenttä");
+            return true;
         }
-        /*
+
         if(TextUtils.isEmpty(birthDateText)) {
             textViewBirthDate.setError("Pakollinen kenttä");
+            return true;
         }
-        */
+
         if(TextUtils.isEmpty(height)) {
             editTextHeight.setError("Pakollinen kenttä");
+            return true;
         }
 
         if(TextUtils.isEmpty(weight)) {
             editTextWeight.setError("Pakollinen kenttä");
+            return true;
         }
+
+        return false;
     }
 
     /**
      * See which radio button is being selected
      */
+    //Manages radio button selection. Yes displays a field for long term illness.
     private void radioButtonSelection(){
         radioGroup = findViewById(R.id.radioGroup);
         editTextLongTermIllness = findViewById(R.id.editTextLongTermIllness);
@@ -208,6 +216,7 @@ public class FirstLaunchActivity extends AppCompatActivity implements DatePicker
     public void onDateSet(android.widget.DatePicker datePicker, int year, int month, int dayOfMonth) {
         Log.d(TAG, "onDateSet: : " + year + " " + month + " " + dayOfMonth);
 
+        //Get year, month and date
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.YEAR, year);
         calendar.set(Calendar.MONTH, month);

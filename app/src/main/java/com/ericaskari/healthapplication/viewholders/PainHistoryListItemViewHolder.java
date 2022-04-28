@@ -38,11 +38,10 @@ public class PainHistoryListItemViewHolder extends RecyclerView.ViewHolder {
         this.binding.titleValue.setText(painLog.bodyPart);
         this.binding.descriptionValue.setText(painLog.description);
 
-        LocalDateTime createdAtLocalDateTime = painLog.createdAt.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-        DateTimeFormatter createdAtFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
-        String createdAtFormatted = createdAtLocalDateTime.format(createdAtFormatter);
-
-        this.binding.createdAtValue.setText(createdAtFormatted);
+//        LocalDateTime createdAtLocalDateTime = painLog.createdAt.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+//        DateTimeFormatter createdAtFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+//        String createdAtFormatted = createdAtLocalDateTime.format(createdAtFormatter);
+//        this.binding.createdAtValue.setText(createdAtFormatted);
 
         this.binding.painStrengthValue.setText(String.format("%d/10", painLog.painStrength));
 

@@ -37,7 +37,7 @@
     <string name="radio_info_no">Ei</string>
     <string name="radio_button_yes">Kyllä</string>
     <string name="radio_button_no">Ei</string>
-    <string name="user_data_text_sent">Kiitos! Tietosi on tallennettu. Voit nyt alkaa käyttää sovellusta.</string>
+    <string name="user_data_text_sent">Kiitos! Tietosi on tallennettu.\n\nVoit nyt alkaa käyttää sovellusta.</string>
     <!--First Launch End -->
 
     <string name="main_activity_pain_history">Kipuhistoria</string>

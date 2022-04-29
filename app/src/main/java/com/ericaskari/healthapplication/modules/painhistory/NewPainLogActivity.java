@@ -1,7 +1,12 @@
 package com.ericaskari.healthapplication.modules.painhistory;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,10 +17,15 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.room.Room;
 
+import com.ericaskari.healthapplication.AlertDetails;
 import com.ericaskari.healthapplication.MainActivity;
+import com.ericaskari.healthapplication.NotificationAlert;
 import com.ericaskari.healthapplication.R;
 import com.ericaskari.healthapplication.databinding.NewPainLogBinding;
 import com.ericaskari.healthapplication.models.PainLog;
@@ -30,6 +40,8 @@ import java.util.Date;
 
 public class NewPainLogActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     AppDatabase db;
+
+    private static final String CHANNEL_ID = "Notification";
 
     private com.ericaskari.healthapplication.databinding.NewPainLogBinding NewPainLogBinding;
 
@@ -179,13 +191,19 @@ public class NewPainLogActivity extends AppCompatActivity implements AdapterView
     }
 
     /**
-     * Saves the data to the database
+     * Saves the data to the database and creates a notification
      */
     private void saveData() {
         PainLog painLog = new PainLog(currentTime, selectedPain, description, takenMedicine, howStrongIsThePain, tellAboutYourFeelings);
         this.db.painLogDao().insertAll(painLog);
 
         Log.i("PainLog", this.db.painLogDao().getAll().toString());
+
+        //Create a notification
+        NotificationAlert notificationAlert = new NotificationAlert(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            notificationAlert.createNotification();
+        }
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

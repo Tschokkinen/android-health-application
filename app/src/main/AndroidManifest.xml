@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthApplication">
         <activity
+            android:name=".AlertDetails"
+            android:exported="false" />
+        <activity
             android:name=".modules.firstLaunch.FirstLaunchDoneActivity"
             android:exported="false" />
         <activity

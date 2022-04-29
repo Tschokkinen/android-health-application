@@ -72,4 +72,7 @@
     <string name="no_medicine_is_taken">Ei ottanut lääkkettä</string>
     <string name="taken_medicine">Ottanut lääkkettä:</string>
 
+    <!--Notification channel Strings -->
+    <string name="channel_name">PainLog</string>
+    <string name="channel_description">PainLogQuery</string>
 </resources>

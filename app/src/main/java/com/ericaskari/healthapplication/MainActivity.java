@@ -2,7 +2,11 @@ package com.ericaskari.healthapplication;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +25,8 @@ import com.ericaskari.healthapplication.services.AppDatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.room.Room;
 
@@ -38,12 +44,16 @@ import java.util.List;
  */
 public class MainActivity extends AppCompatActivity implements OnHomePageItemClickListener {
 
+    private static final String CHANNEL_ID = "Notification"; //Used by the createNotificationChannel
     private ActivityMainBinding activityMainBinding;
     private AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Create notification channel. Must be called early on application start!
+        createNotificationChannel();
 
         //  Get View instance
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -88,6 +98,27 @@ public class MainActivity extends AppCompatActivity implements OnHomePageItemCli
         activityMainBinding.addButton.setOnClickListener(this::onAddButtonClick);
     }
 
+    /**
+     * Creates a notification channel
+     * @author Gavril Tschokkinen
+     */
+    //Creates the notification channel
+    //Based on this article: https://developer.android.com/training/notify-user/build-notification#java
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel_name);
+            String description = getString(R.string.channel_description);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
 
     /**
      * Handle button clicks from {@link HomePageListRecyclerViewAdapter}

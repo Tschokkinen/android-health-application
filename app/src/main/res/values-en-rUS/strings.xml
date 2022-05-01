@@ -57,17 +57,17 @@
         <item>Ei mikään näistä</item>
     </string-array>
 
-    <string name="have_you_taken_medicine_for_the_pain">Oletko ottanut kipuun lääkettä?</string>
-    <string name="medicine_taken_for_the_pain">Kirjaa lääkkeet tähän...</string>
+    <string name="have_you_taken_medicine_for_the_pain">Have you taken any medicine for this pain?</string>
+    <string name="medicine_taken_for_the_pain">Write medicines here...</string>
     <string name="button_ready">Valmis</string>
     <string name="how_strong_is_the_pain">Kuinka kova kipu on asteikolla 1-10</string>
     <string name="how_does_the_pain_affect">Miten kipu vaikuttaa mielialaasi?</string>
-    <string name="tell_about_your_feelings">Voit kertoa mielialastasi vapaasti tässä...</string>
+    <string name="tell_about_your_feelings">You can write here about your feelings...</string>
     <!--NewPainLog End -->
-    <string name="no_medicine_is_taken">Ei ottanut lääkkettä</string>
-    <string name="taken_medicine">Ottanut lääkkettä:</string>
+    <string name="no_medicine_is_taken">No medicine has been taken.</string>
+    <string name="taken_medicine">Taken medicines:</string>
     <!--ProfileEdit -->
-    <string name="profile_edit_discard">Peruuta</string>
-    <string name="profile_edit_save">Tallenna</string>
+    <string name="profile_edit_discard">Cancel</string>
+    <string name="profile_edit_save">Save</string>
 
 </resources>

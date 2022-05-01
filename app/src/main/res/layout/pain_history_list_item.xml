@@ -1,3 +1,6 @@
+
+<!--@author Mohammad Askari (Eric)-->
+
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/cardView"
     android:layout_width="match_parent"

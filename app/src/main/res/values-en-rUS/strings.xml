@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Mihin sattuu?</string>
-    <string name="first_launch_activity_name">Tervetuloa</string>
+    <string name="first_launch_activity_name">Welcome</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="next">Next</string>
@@ -9,44 +9,44 @@
     <!-- First launch -->
     <string name="user_data_message">Hei, \n\nja tervetuloa käyttämään Mihin sattuu? -sovellusta.\n\nSovelluksen avulla voit seurata hyvinvointiasi koettujen kipujen näkökulmasta. Ennen sovelluksen käyttöönottoa tarvitsemme hieman tietoa sinusta.</string>
     <string name="disclaimer">Vastuuvapauslauseke:\nSovellusta ei ole tarkoitettu lääkinnälliseen käyttöön vaan oman hyvinvoinnin omaehtoiseen seuraamiseen. Keskustele aina lääkinnällisistä asioista sekä kivusta lääkärisi tai terveydenhuollon edustajan kanssa.</string>
-    <string name="user_data_nextButton">Seuraava</string>
-    <string name="user_data_backButton">Takaisin</string>
-    <string name="user_data_doneButton">Valmis</string>
-    <string name="user_data_title">Käyttäjätiedot</string>
-    <string name="user_data_text_name">Etunimi</string>
+    <string name="user_data_nextButton">Next</string>
+    <string name="user_data_backButton">Back</string>
+    <string name="user_data_doneButton">Done</string>
+    <string name="user_data_title">User information</string>
+    <string name="user_data_text_name">Firstname</string>
     <string name="user_data_name_example">Maija</string>
-    <string name="user_data_text_lastname">Sukunimi</string>
+    <string name="user_data_text_lastname">Lastname</string>
     <string name="user_data_last_name_example">Markkanen</string>
-    <string name="user_data_text_long_term_illness">Pitkäaikaissairaudet</string>
-    <string name="user_data_text_age_title">Syntymäpäivä</string>
+    <string name="user_data_text_long_term_illness">Long-term illnesses</string>
+    <string name="user_data_text_age_title">Birthdate</string>
     <string name="user_data_birthdate_example">13.13.2013</string>
-    <string name="user_data_button_pick_a_date">Kalenteri</string>
-    <string name="user_data_pick_a_date">Valitse syntymäpäivä</string>
-    <string name="user_data_text_age">pp.kk.vvvv</string>
-    <string name="user_data_text_height">Pituus</string>
+    <string name="user_data_button_pick_a_date">Calendar</string>
+    <string name="user_data_pick_a_date">Choose Birthdate</string>
+    <string name="user_data_text_age">dd.mm.yyyy</string>
+    <string name="user_data_text_height">Height</string>
     <string name="user_data_height_example">170</string>
-    <string name="user_data_text_weight">Paino</string>
+    <string name="user_data_text_weight">Weight</string>
     <string name="user_data_weight_example">77</string>
-    <string name="user_data_long_term_illness">Onko sinulla pitkäaikaissairauksia?</string>
-    <string name="radio_info_yes">Kyllä</string>
-    <string name="radio_info_no">Ei</string>
-    <string name="radio_button_yes">Kyllä</string>
-    <string name="radio_button_no">Ei</string>
-    <string name="user_data_text_sent">Kiitos! Tietosi on tallennettu.\n\nVoit nyt alkaa käyttää sovellusta.</string>
+    <string name="user_data_long_term_illness">Do you have any long-term illness?</string>
+    <string name="radio_info_yes">Yes</string>
+    <string name="radio_info_no">No</string>
+    <string name="radio_button_yes">Yes</string>
+    <string name="radio_button_no">No</string>
+    <string name="user_data_text_sent">Thanks! Your information has been saved.\n\nNow you can start using the application.</string>
     <!--First Launch End -->
 
-    <string name="main_activity_pain_history">Kipuhistoria</string>
-    <string name="main_activity_medicines">Lääkkeet</string>
-    <string name="main_activity_settings">Asetukset</string>
-    <string name="main_activity_own_information">Omat tiedot</string>
-    <string name="main_activity_plus">Mihin sattuu?</string>
-    <string name="delete_data">Poista tiedot</string>
-    <string name="profile_menu_edit">Muokkaa</string>
-    <string name="birthdate">Syntymäpäivä</string>
+    <string name="main_activity_pain_history">Pain history</string>
+    <string name="main_activity_medicines">Medicines</string>
+    <string name="main_activity_settings">Settings</string>
+    <string name="main_activity_own_information">Own information</string>
+    <string name="main_activity_plus">Where does it hurt?</string>
+    <string name="delete_data">Delete information</string>
+    <string name="profile_menu_edit">Edit</string>
+    <string name="birthdate">Birthdate</string>
 
     <!-- NewPainLog -->
-    <string name="where_is_the_pain">Mihin sattuu?</string>
-    <string name="describe_the_pain">Voit kertoa tarkemmin kivusta tässä...</string>
+    <string name="where_is_the_pain">Where does it hurt?</string>
+    <string name="describe_the_pain">Tell us more about it here…</string>
 
     <string-array name="list_of_pains">
         <item>Niska</item>

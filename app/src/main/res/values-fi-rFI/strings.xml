@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Mihin sattuu?</string>
     <string name="first_launch_activity_name">Tervetuloa</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Asetukset</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="next">Seuraava</string>
+    <string name="previous">Edellinen</string>
 
     <!-- First launch -->
     <string name="user_data_message">Hei, \n\nja tervetuloa käyttämään Mihin sattuu? -sovellusta.\n\nSovelluksen avulla voit seurata hyvinvointiasi koettujen kipujen näkökulmasta. Ennen sovelluksen käyttöönottoa tarvitsemme hieman tietoa sinusta.</string>

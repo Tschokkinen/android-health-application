@@ -26,12 +26,11 @@ import java.util.Date;
 
 /**
  * @author Gavril Tschokkinen
+ * Used to log a new pain into the pain history. Gathers all of the input data and passess it to the database
  */
 
 public class NewPainLogActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    AppDatabase db;
-
-    private static final String CHANNEL_ID = "Notification";
+    AppDatabase db; //Database
 
     private com.ericaskari.healthapplication.databinding.NewPainLogBinding NewPainLogBinding;
 
@@ -60,7 +59,7 @@ public class NewPainLogActivity extends AppCompatActivity implements AdapterView
 
 
     /**
-     *
+     * onCreate is used to initialize activity and find views in activity
      * @param savedInstanceState
      */
     @Override
@@ -125,7 +124,7 @@ public class NewPainLogActivity extends AppCompatActivity implements AdapterView
             radioButtonSelection();
         } else if (v == findViewById(R.id.buttonLogPainReady)) {
             Log.i("Button", "Button clicked");
-            gatherData();
+            gatherData(); //Start gathering user input
         }
     }
 
@@ -137,9 +136,11 @@ public class NewPainLogActivity extends AppCompatActivity implements AdapterView
         radioGroupLogPain.setOnCheckedChangeListener((radioGroup, i) -> {
             switch (i) {
                 case R.id.radioButtonPainLogYes:
+                    //Set text view active
                     editTextMedicineTakenForThePain.setVisibility(View.VISIBLE);
                     break;
                 case R.id.radioButtonPainLogNo:
+                    //Set text view inactive
                     editTextMedicineTakenForThePain.setVisibility(View.INVISIBLE);
             }
         });
@@ -187,7 +188,7 @@ public class NewPainLogActivity extends AppCompatActivity implements AdapterView
         PainLog painLog = new PainLog(currentTime, selectedPain, description, takenMedicine, howStrongIsThePain, tellAboutYourFeelings);
         this.db.painLogDao().insertAll(painLog);
 
-        Log.i("PainLog", this.db.painLogDao().getAll().toString());
+        //Log.i("PainLog", this.db.painLogDao().getAll().toString());
 
         //Start a notification service
         startService(new Intent(this, NotificationService.class));

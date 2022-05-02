@@ -21,15 +21,15 @@ import java.util.TimerTask;
  * NotificationService (service) is used to display a delayed notification after a pain has been reported.
  */
 
-//Code taken from tutorial on https://www.tutorialspoint.com/send-a-notification-when-the-android-app-is-closed
-//Code modified from start to finish to fit our use
+//Code taken partly from tutorial on https://www.tutorialspoint.com/send-a-notification-when-the-android-app-is-closed
+//Code self-modified from start to finish to fit our use
 public class NotificationService extends Service {
     public static final String NOTIFICATION_CHANNEL_ID = "10001" ;
     private final static String CHANNEL_ID = "default" ;
-    final Handler handler = new Handler(); //we are going to use a handler to be able to run in our TimerTask
-    Timer timer;
-    TimerTask timerTask;
-    int delayTime = 10; //Notification delay
+    final Handler handler = new Handler();
+    Timer timer; //Timer
+    TimerTask timerTask; //Timer task
+    int delayTime = 10; //Wanted notification delay in seconds
 
     /**
      *
@@ -88,14 +88,14 @@ public class NotificationService extends Service {
     }
 
     /**
-     * Initialize timer
+     * Initializes timer
      */
     public void initializeTimerTask () {
         timerTask = new TimerTask() {
             public void run () {
                 handler.post(new Runnable() {
                     public void run () {
-                        createNotification();
+                        createNotification(); //Create a new notification
                         stopTimerTask(); //Stop timer so that no more notifications are created
                     }
                 });
@@ -116,13 +116,12 @@ public class NotificationService extends Service {
 
         //Build notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext() , CHANNEL_ID)
-            .setContentTitle("Mihin sattuu?")
-            .setContentText("Onko kipu hellittänyt?")
-            .setTicker("Onko kipu hellittänyt?")
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
-                //Set intent for on notification click
-            .setContentIntent(pendingIntent)
-            .setAutoCancel(true);
+            .setContentTitle("Mihin sattuu?") //Notification title
+            .setContentText("Onko kipu hellittänyt?") //Notification message
+            .setTicker("Onko kipu hellittänyt?") //Used by screen readers (accessibility)
+            .setSmallIcon(R.drawable.ic_launcher_foreground) //Set notification icon
+            .setContentIntent(pendingIntent) //Intent on notification click
+            .setAutoCancel(true); //Close notification
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE) ;
 

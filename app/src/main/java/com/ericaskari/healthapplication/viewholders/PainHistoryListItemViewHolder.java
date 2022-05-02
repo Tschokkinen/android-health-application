@@ -1,7 +1,6 @@
 package com.ericaskari.healthapplication.viewholders;
 
 import android.content.res.Resources;
-import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,12 +9,10 @@ import com.ericaskari.healthapplication.adapters.PainLogListRecyclerViewAdapter;
 import com.ericaskari.healthapplication.databinding.PainHistoryListItemBinding;
 import com.ericaskari.healthapplication.models.PainLog;
 
-import java.text.DateFormat;
-import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 import java.time.LocalDateTime;
+
 /**
  * @author Mohammad Askari (Eric)
  * ViewHolder to inject data to {@link PainHistoryListItemBinding}

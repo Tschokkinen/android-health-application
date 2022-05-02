@@ -1,12 +1,7 @@
 package com.ericaskari.healthapplication.modules.painhistory;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,17 +12,12 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.room.Room;
 
-import com.ericaskari.healthapplication.AlertDetails;
 import com.ericaskari.healthapplication.MainActivity;
-import com.ericaskari.healthapplication.NotificationAlert;
+import com.ericaskari.healthapplication.NotificationService;
 import com.ericaskari.healthapplication.R;
-import com.ericaskari.healthapplication.databinding.NewPainLogBinding;
 import com.ericaskari.healthapplication.models.PainLog;
 import com.ericaskari.healthapplication.services.AppDatabase;
 
@@ -78,6 +68,9 @@ public class NewPainLogActivity extends AppCompatActivity implements AdapterView
         super.onCreate(savedInstanceState);
         NewPainLogBinding = NewPainLogBinding.inflate(getLayoutInflater());
         setContentView(NewPainLogBinding.getRoot());
+
+        //Stop notification service if running
+        stopService(new Intent(this, NotificationService.class ));
 
         //Get database
         this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").allowMainThreadQueries().build();
@@ -199,15 +192,13 @@ public class NewPainLogActivity extends AppCompatActivity implements AdapterView
 
         Log.i("PainLog", this.db.painLogDao().getAll().toString());
 
-        //Create a notification
-        NotificationAlert notificationAlert = new NotificationAlert(this);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            notificationAlert.createNotification();
-        }
+        //Start a notification service
+        startService(new Intent(this, NotificationService.class));
 
+        //Go back to main activity
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        finish();
+        finish(); //Close current activity
     }
 
     /**

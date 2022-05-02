@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthApplication">
         <activity
-            android:name=".AlertDetails"
-            android:exported="false" />
-        <activity
             android:name=".modules.firstLaunch.FirstLaunchDoneActivity"
             android:exported="false" />
         <activity
@@ -62,6 +59,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name = ".NotificationService"
+            android:label = "@string/app_name"
+            android:exported="true">
+            <intent-filter>
+                <action
+                    android:name = ".NotificationService" />
+                <category android:name= "android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
     </application>
+
 
 </manifest>

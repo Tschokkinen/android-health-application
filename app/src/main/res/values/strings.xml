@@ -70,4 +70,7 @@
     <string name="profile_edit_discard">Peruuta</string>
     <string name="profile_edit_save">Tallenna</string>
 
+    <!--Notification channel Strings -->
+    <string name="channel_name">PainLog</string>
+    <string name="channel_description">PainLogQuery</string>
 </resources>

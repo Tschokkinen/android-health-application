@@ -69,9 +69,6 @@ public class NewPainLogActivity extends AppCompatActivity implements AdapterView
         NewPainLogBinding = NewPainLogBinding.inflate(getLayoutInflater());
         setContentView(NewPainLogBinding.getRoot());
 
-        //Stop notification service if running
-        stopService(new Intent(this, NotificationService.class ));
-
         //Get database
         this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").allowMainThreadQueries().build();
 

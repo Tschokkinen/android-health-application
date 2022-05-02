@@ -73,7 +73,7 @@ public class NotificationService extends Service {
     public void startTimer () {
         timer = new Timer();
         initializeTimerTask();
-        timer.schedule( timerTask, 5000, delayTime * 1000);
+        timer.schedule(timerTask, 5000, delayTime * 1000);
     }
 
     /**
@@ -96,6 +96,7 @@ public class NotificationService extends Service {
                 handler.post(new Runnable() {
                     public void run () {
                         createNotification();
+                        stopTimerTask(); //Stop timer so that no more notifications are created
                     }
                 });
             }
@@ -105,6 +106,8 @@ public class NotificationService extends Service {
     /**
      * Creates the notification displayed when the timer runs out
      */
+    //Creates the notification
+    //Used for directions https://developer.android.com/training/notify-user/build-notification
     private void createNotification () {
         //Intent to show when notification is clicked
         Intent intent = new Intent(this, NewPainLogActivity.class);
@@ -116,7 +119,7 @@ public class NotificationService extends Service {
             .setContentTitle("Mihin sattuu?")
             .setContentText("Onko kipu hellittänyt?")
             .setTicker("Onko kipu hellittänyt?")
-            .setSmallIcon(R.drawable.notification_icon)
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
                 //Set intent for on notification click
             .setContentIntent(pendingIntent)
             .setAutoCancel(true);
@@ -124,13 +127,13 @@ public class NotificationService extends Service {
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE) ;
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            int importance = NotificationManager.IMPORTANCE_HIGH;
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "NOTIFICATION_CHANNEL_NAME", importance);
             builder.setChannelId(NOTIFICATION_CHANNEL_ID);
             assert notificationManager != null;
             notificationManager.createNotificationChannel(notificationChannel);
         }
-        assert notificationManager != null;
+        assert notificationManager != null; //Check if notificationManager is not null
         notificationManager.notify((int) System.currentTimeMillis(), builder.build());
     }
 }

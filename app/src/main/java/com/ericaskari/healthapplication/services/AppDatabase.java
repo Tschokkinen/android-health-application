@@ -1,6 +1,9 @@
 package com.ericaskari.healthapplication.services;
 
+import android.content.Context;
+
 import androidx.room.Database;
+import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
@@ -27,4 +30,9 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract MedicineDao medicineDao();
 
     public abstract PainLogDao painLogDao();
+
+
+    public static AppDatabase getInstance(Context context) {
+        return Room.databaseBuilder(context, AppDatabase.class, "app-db").allowMainThreadQueries().build();
+    }
 }

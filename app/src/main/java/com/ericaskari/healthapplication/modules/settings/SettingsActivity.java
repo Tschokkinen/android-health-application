@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import com.ericaskari.healthapplication.databinding.SettingsBinding;
 import com.ericaskari.healthapplication.models.User;
@@ -35,7 +34,7 @@ public class SettingsActivity extends AppCompatActivity {
         settingsActivityBinding = SettingsBinding.inflate(getLayoutInflater());
 
         //  Save Database reference
-        this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").allowMainThreadQueries().build();
+        this.db = AppDatabase.getInstance(getApplicationContext());
 
         //  Show User the view
         setContentView(settingsActivityBinding.getRoot());

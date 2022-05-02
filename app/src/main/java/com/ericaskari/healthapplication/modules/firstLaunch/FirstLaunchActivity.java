@@ -8,7 +8,6 @@ import androidx.room.Room;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -19,6 +18,7 @@ import com.ericaskari.healthapplication.R;
 import com.ericaskari.healthapplication.fragments.DatePicker;
 import com.ericaskari.healthapplication.models.User;
 import com.ericaskari.healthapplication.services.AppDatabase;
+import com.ericaskari.healthapplication.validators.UserModelValidation;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -123,8 +123,16 @@ public class FirstLaunchActivity extends AppCompatActivity implements DatePicker
             longTermIllness = longTermIllnessDefault;
         }
 
+        UserModelValidation userModelValidation = new UserModelValidation(
+                editTextFirstName,
+                editTextLastName,
+                textViewBirthDate,
+                editTextHeight,
+                editTextWeight
+        );
+
         //If none of the required fields are not empty, saveData()
-        if(!requiredFieldEmpty()) {
+        if(userModelValidation.validate()) {
             saveData();
         }
     }
@@ -146,41 +154,6 @@ public class FirstLaunchActivity extends AppCompatActivity implements DatePicker
         //Go to verify screen
         Intent intent = new Intent(this, FirstLaunchDoneActivity.class);
         startActivity(intent);
-    }
-
-    /**
-     * Used to check if any of the required fields is empty.
-     */
-    //Checks if any of the required fields is empty and shows a warning sign if neccessary
-    private boolean requiredFieldEmpty() {
-        Log.d("FirstLaunch", "A required field is null");
-
-        if(TextUtils.isEmpty(firstName)) {
-            editTextFirstName.setError("Pakollinen kenttä");
-            return true;
-        }
-
-        if(TextUtils.isEmpty(lastName)) {
-            editTextLastName.setError("Pakollinen kenttä");
-            return true;
-        }
-
-        if(TextUtils.isEmpty(birthDateText)) {
-            textViewBirthDate.setError("Pakollinen kenttä");
-            return true;
-        }
-
-        if(TextUtils.isEmpty(height)) {
-            editTextHeight.setError("Pakollinen kenttä");
-            return true;
-        }
-
-        if(TextUtils.isEmpty(weight)) {
-            editTextWeight.setError("Pakollinen kenttä");
-            return true;
-        }
-
-        return false;
     }
 
     /**

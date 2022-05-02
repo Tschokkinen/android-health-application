@@ -18,6 +18,7 @@ import com.ericaskari.healthapplication.databinding.ProfileEditBinding;
 import com.ericaskari.healthapplication.fragments.DatePicker;
 import com.ericaskari.healthapplication.models.User;
 import com.ericaskari.healthapplication.services.AppDatabase;
+import com.ericaskari.healthapplication.validators.UserModelValidation;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -58,6 +59,20 @@ public class ProfileEditActivity extends AppCompatActivity implements DatePicker
 
     private void onSaveButtonClick(View view) {
         Log.d(TAG, "onSaveButtonClick: " + this);
+
+        UserModelValidation userModelValidation = new UserModelValidation(
+                binding.firstnameValue,
+                binding.lastNameValue,
+                binding.birthdateValue,
+                binding.heightValue,
+                binding.weightValue
+        );
+
+        //  Stop if it's not valid form
+        if (!userModelValidation.validate()) {
+            return;
+        }
+
         modifiedUser.firstName = this.binding.firstnameValue.getText().toString();
         modifiedUser.lastName = this.binding.lastNameValue.getText().toString();
         modifiedUser.weight = Integer.parseInt(this.binding.weightValue.getText().toString());

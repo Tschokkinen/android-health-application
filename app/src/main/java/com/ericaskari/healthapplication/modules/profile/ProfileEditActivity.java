@@ -5,14 +5,11 @@ import static android.content.ContentValues.TAG;
 import android.app.DatePickerDialog;
 import android.os.AsyncTask;
 
-import java.net.URL;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import com.ericaskari.healthapplication.databinding.ProfileEditBinding;
 import com.ericaskari.healthapplication.fragments.DatePicker;
@@ -37,7 +34,7 @@ public class ProfileEditActivity extends AppCompatActivity implements DatePicker
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.binding = ProfileEditBinding.inflate(getLayoutInflater());
-        this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").allowMainThreadQueries().build();
+        this.db = AppDatabase.getInstance(getApplicationContext());
 
         setContentView(binding.getRoot());
 

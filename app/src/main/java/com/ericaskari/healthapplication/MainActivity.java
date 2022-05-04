@@ -28,7 +28,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.room.Room;
 
 import com.ericaskari.healthapplication.databinding.ActivityMainBinding;
 
@@ -54,8 +53,11 @@ public class MainActivity extends AppCompatActivity implements OnHomePageItemCli
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
 
         //  Get Db instance
-        this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").allowMainThreadQueries().build();
+        this.db = AppDatabase.getInstance(getApplicationContext());
 
+//        activityMainBinding.addButton.getBackground().mutate().setTint(ContextCompat.getColor(getApplicationContext(), R.color.purple_200));
+        activityMainBinding.addButton.setBackgroundColor(getResources().getColor(R.color.purple_700));
+        activityMainBinding.addButton.setRippleColor(getResources().getColor(R.color.purple_700));
         //  Get all users from Database
         List<User> users = this.db.userDao().getAll();
 

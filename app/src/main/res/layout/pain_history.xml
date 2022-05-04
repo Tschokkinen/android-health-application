@@ -5,6 +5,12 @@
     android:layout_height="match_parent"
     android:id="@+id/sample_main_layout">
 
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pieChart"
+        android:layout_width="match_parent"
+        android:layout_marginVertical="20dp"
+        android:layout_height="200dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pain_history_recycler_view"
         android:layout_width="match_parent"

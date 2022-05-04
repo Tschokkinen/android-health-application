@@ -6,9 +6,9 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import com.ericaskari.healthapplication.databinding.SettingsBinding;
+import com.ericaskari.healthapplication.models.PainLog;
 import com.ericaskari.healthapplication.models.User;
 import com.ericaskari.healthapplication.modules.firstLaunch.FirstLaunchActivity;
 import com.ericaskari.healthapplication.services.AppDatabase;
@@ -35,7 +35,7 @@ public class SettingsActivity extends AppCompatActivity {
         settingsActivityBinding = SettingsBinding.inflate(getLayoutInflater());
 
         //  Save Database reference
-        this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").allowMainThreadQueries().build();
+        this.db = AppDatabase.getInstance(getApplicationContext());
 
         //  Show User the view
         setContentView(settingsActivityBinding.getRoot());
@@ -49,6 +49,12 @@ public class SettingsActivity extends AppCompatActivity {
 
         //  Get Users
         List<User> users = this.db.userDao().getAll();
+        List<PainLog> painLogList = this.db.painLogDao().getAll();
+
+        //  Delete PainLogs
+        for (PainLog painLog : painLogList) {
+            this.db.painLogDao().delete(painLog);
+        }
 
         //  Delete Users
         for (User user : users) {

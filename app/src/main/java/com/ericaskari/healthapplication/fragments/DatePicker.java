@@ -14,6 +14,11 @@ import androidx.fragment.app.DialogFragment;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * DatePicker popup. It will simply overwrite onCreateDialog and returns a DatePicker.
+ *
+ * @author Mohammad Askari (Eric)
+ */
 public class DatePicker extends DialogFragment {
     int year;
     int month;

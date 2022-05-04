@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import com.ericaskari.healthapplication.R;
 import com.ericaskari.healthapplication.databinding.ProfileBinding;
@@ -39,7 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
         this.binding = ProfileBinding.inflate(getLayoutInflater());
 
         //  Save Database reference
-        this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").allowMainThreadQueries().build();
+        this.db = AppDatabase.getInstance(getApplicationContext());
 
         //  Show User the view
         setContentView(binding.getRoot());

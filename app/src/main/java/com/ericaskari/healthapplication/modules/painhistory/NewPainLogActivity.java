@@ -16,8 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import com.ericaskari.healthapplication.MainActivity;
+import com.ericaskari.healthapplication.NotificationService;
 import com.ericaskari.healthapplication.R;
-import com.ericaskari.healthapplication.databinding.NewPainLogBinding;
 import com.ericaskari.healthapplication.models.PainLog;
 import com.ericaskari.healthapplication.services.AppDatabase;
 
@@ -26,10 +26,11 @@ import java.util.Date;
 
 /**
  * @author Gavril Tschokkinen
+ * Used to log a new pain into the pain history. Gathers all of the input data and passess it to the database
  */
 
 public class NewPainLogActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    AppDatabase db;
+    AppDatabase db; //Database
 
     private com.ericaskari.healthapplication.databinding.NewPainLogBinding NewPainLogBinding;
 
@@ -58,7 +59,7 @@ public class NewPainLogActivity extends AppCompatActivity implements AdapterView
 
 
     /**
-     *
+     * onCreate is used to initialize activity and find views in activity
      * @param savedInstanceState
      */
     @Override
@@ -123,7 +124,7 @@ public class NewPainLogActivity extends AppCompatActivity implements AdapterView
             radioButtonSelection();
         } else if (v == findViewById(R.id.buttonLogPainReady)) {
             Log.i("Button", "Button clicked");
-            gatherData();
+            gatherData(); //Start gathering user input
         }
     }
 
@@ -135,9 +136,11 @@ public class NewPainLogActivity extends AppCompatActivity implements AdapterView
         radioGroupLogPain.setOnCheckedChangeListener((radioGroup, i) -> {
             switch (i) {
                 case R.id.radioButtonPainLogYes:
+                    //Set text view active
                     editTextMedicineTakenForThePain.setVisibility(View.VISIBLE);
                     break;
                 case R.id.radioButtonPainLogNo:
+                    //Set text view inactive
                     editTextMedicineTakenForThePain.setVisibility(View.INVISIBLE);
             }
         });
@@ -179,17 +182,21 @@ public class NewPainLogActivity extends AppCompatActivity implements AdapterView
     }
 
     /**
-     * Saves the data to the database
+     * Saves the data to the database and creates a notification
      */
     private void saveData() {
         PainLog painLog = new PainLog(currentTime, selectedPain, description, takenMedicine, howStrongIsThePain, tellAboutYourFeelings);
         this.db.painLogDao().insertAll(painLog);
 
-        Log.i("PainLog", this.db.painLogDao().getAll().toString());
+        //Log.i("PainLog", this.db.painLogDao().getAll().toString());
 
+        //Start a notification service
+        startService(new Intent(this, NotificationService.class));
+
+        //Go back to main activity
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        finish();
+        finish(); //Close current activity
     }
 
     /**

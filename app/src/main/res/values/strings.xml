@@ -49,11 +49,15 @@
     <string name="describe_the_pain">Voit kertoa tarkemmin kivusta tässä...</string>
 
     <string-array name="list_of_pains">
+        <item>Pää</item>
         <item>Niska</item>
         <item>Hartia</item>
-        <item>Polvi</item>
+        <item>Käsi</item>
         <item>Yläselkä</item>
         <item>Alaselkä</item>
+        <item>Vatsa</item>
+        <item>Jalka</item>
+        <item>Polvi</item>
         <item>Ei mikään näistä</item>
     </string-array>
 
@@ -70,4 +74,7 @@
     <string name="profile_edit_discard">Peruuta</string>
     <string name="profile_edit_save">Tallenna</string>
 
+    <!--Notification channel Strings -->
+    <string name="channel_name">PainLog</string>
+    <string name="channel_description">PainLogQuery</string>
 </resources>

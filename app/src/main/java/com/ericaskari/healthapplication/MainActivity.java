@@ -2,7 +2,11 @@ package com.ericaskari.healthapplication;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +25,8 @@ import com.ericaskari.healthapplication.services.AppDatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.ericaskari.healthapplication.databinding.ActivityMainBinding;
@@ -36,7 +42,6 @@ import java.util.List;
  * @author Mohammad Askari (Eric)
  */
 public class MainActivity extends AppCompatActivity implements OnHomePageItemClickListener {
-
     private ActivityMainBinding activityMainBinding;
     private AppDatabase db;
 

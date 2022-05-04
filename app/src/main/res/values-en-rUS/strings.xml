@@ -49,11 +49,15 @@
     <string name="describe_the_pain">Tell us more about it here…</string>
 
     <string-array name="list_of_pains">
+        <item>Pää</item>
         <item>Niska</item>
         <item>Hartia</item>
-        <item>Polvi</item>
+        <item>Käsi</item>
         <item>Yläselkä</item>
         <item>Alaselkä</item>
+        <item>Vatsa</item>
+        <item>Jalka</item>
+        <item>Polvi</item>
         <item>Ei mikään näistä</item>
     </string-array>
 

@@ -108,12 +108,11 @@ _For more examples, please refer to the [Documentation](https://github.com/erica
 - [x] Add Database
 - [x] Add Initial Activities
 - [x] Add Dashboard Activity
-- [ ] Add Core functionality
-- [ ] Style the application
-- [ ] Add Network calls and more features
-- [ ] Multi-language Support
+- [x] Add Core functionality
+- [x] Style the application
+- [x] Multi-language Support
     - [x] Finnish
-    - [ ] English
+    - [x] English
 
 See the [open issues](https://github.com/ericaskari/health-application/issues) for a full list of proposed features (and known issues).
 

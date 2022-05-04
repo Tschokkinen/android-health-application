@@ -1,19 +1,42 @@
 package com.ericaskari.healthapplication;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.room.Room;
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
-public class hello_fragmented extends AppCompatActivity {
+import com.ericaskari.healthapplication.fragments.DatePicker;
+import com.ericaskari.healthapplication.models.User;
+import com.ericaskari.healthapplication.modules.firstLaunch.FirstLaunchDoneActivity;
+import com.ericaskari.healthapplication.services.AppDatabase;
+import com.ericaskari.healthapplication.validators.UserModelValidation;
+
+import java.util.Calendar;
+import java.util.Date;
+
+public class hello_fragmented extends AppCompatActivity{
+
+
+
 
     FragmentManager fragmentManager;
     Button btn1;
     Button btn2;
     Fragment currentFragment;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +44,8 @@ public class hello_fragmented extends AppCompatActivity {
         setContentView(R.layout.activity_hello_fragmented);
 
         fragmentManager = getSupportFragmentManager();
+
+
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -58,4 +83,5 @@ public class hello_fragmented extends AppCompatActivity {
             }
         });
     }
+
 }

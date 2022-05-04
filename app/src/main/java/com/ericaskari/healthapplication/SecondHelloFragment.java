@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
@@ -13,6 +14,13 @@ import androidx.fragment.app.Fragment;
  * create an instance of this fragment.
  */
 public class SecondHelloFragment extends Fragment {
+
+    //String variables
+    private String firstName;
+    private String lastName;
+
+    private EditText editTextFirstName;
+    private EditText editTextLastName;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,5 +68,15 @@ public class SecondHelloFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_hello_second, container, false);
+    }
+
+    // This event is triggered soon after onCreateView().
+    // onViewCreated() is only called if the view returned from onCreateView() is non-null.
+    // Any view setup should occur here.  E.g., view lookups and attaching view listeners.
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        editTextFirstName = (EditText) view.findViewById(R.id.firstName);
+        editTextLastName = (EditText) view.findViewById(R.id.lastName);
     }
 }

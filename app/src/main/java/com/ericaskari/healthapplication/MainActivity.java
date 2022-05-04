@@ -65,7 +65,8 @@ public class MainActivity extends AppCompatActivity implements OnHomePageItemCli
         boolean isFirstLaunchNeeded = users.toArray().length == 0;
 
         if (isFirstLaunchNeeded) {
-            Intent intent = new Intent(this, HelloActivity.class);
+            //Intent intent = new Intent(this, HelloActivity.class);
+            Intent intent = new Intent(this, hello_fragmented.class);
             startActivity(intent);
 
         } else {

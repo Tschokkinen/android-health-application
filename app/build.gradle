@@ -32,6 +32,7 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def room_version = "2.4.2"
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
@@ -46,4 +47,11 @@ dependencies {
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'       //  Added to use LocalDateTime with minSdk 21
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation "androidx.core:core:1.6.0"
+
+    def fragment_version = "1.4.1"
+
+    // Java language implementation
+    implementation "androidx.fragment:fragment:$fragment_version"
+    // Kotlin
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
 }

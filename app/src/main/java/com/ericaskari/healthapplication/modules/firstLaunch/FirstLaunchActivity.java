@@ -32,8 +32,6 @@ public class FirstLaunchActivity extends AppCompatActivity implements DatePicker
     AppDatabase db;
 
     //View components
-    private RadioGroup radioGroup;
-    private EditText editTextLongTermIllness;
     private EditText editTextFirstName;
     private EditText editTextLastName;
     private TextView textViewBirthDate;
@@ -46,8 +44,6 @@ public class FirstLaunchActivity extends AppCompatActivity implements DatePicker
     private String birthDateText;
     private String height;
     private String weight;
-    private String longTermIllness;
-    private String longTermIllnessDefault = "Ei pitkäaikaissairauksia";
 
     //Birth date
     private Date birthDate;
@@ -64,9 +60,6 @@ public class FirstLaunchActivity extends AppCompatActivity implements DatePicker
         //Get database
         this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").allowMainThreadQueries().build();
 
-        //Get radiobutton status
-        radioButtonSelection();
-
         //Create new Date() object
         birthDate = new Date();
 
@@ -76,7 +69,6 @@ public class FirstLaunchActivity extends AppCompatActivity implements DatePicker
         textViewBirthDate = findViewById(R.id.textViewBirthDate);
         editTextHeight = findViewById(R.id.height);
         editTextWeight = findViewById(R.id.weight);
-        editTextLongTermIllness = findViewById(R.id.editTextLongTermIllness);
     }
 
     /**
@@ -84,10 +76,8 @@ public class FirstLaunchActivity extends AppCompatActivity implements DatePicker
      * @param v
      */
     public void buttonManager(View v) {
-        if(v == findViewById(R.id.nextButtonFirstLaunch)) {
+        if(v == findViewById(R.id.nextButtonFirstLaunchLongTermIllness)) {
             gatherData();
-        } else if (v == findViewById(R.id.radioGroup)) {
-            radioButtonSelection();
         } else if(v == findViewById(R.id.buttonPickBirthdateFirstLaunch)) {
             Date currentTime = Calendar.getInstance().getTime(); //Get time and date of log
             showDatePicker(currentTime);
@@ -106,7 +96,7 @@ public class FirstLaunchActivity extends AppCompatActivity implements DatePicker
     }
 
     /**
-     * Gather the user input and send it to saveData() if everything checks out.
+     * Gather the user input and send it to next activity if everything checks out.
      */
     //Gather data from the input fields and save data if everything checks out.
     private void gatherData() {
@@ -116,12 +106,6 @@ public class FirstLaunchActivity extends AppCompatActivity implements DatePicker
         birthDateText = textViewBirthDate.getText().toString();
         height = editTextHeight.getText().toString();
         weight = editTextWeight.getText().toString();
-        longTermIllness = editTextLongTermIllness.getText().toString();
-
-        //If user doesn't have any long term illnesses assign a default value here
-        if(longTermIllness.isEmpty()) {
-            longTermIllness = longTermIllnessDefault;
-        }
 
         UserModelValidation userModelValidation = new UserModelValidation(
                 editTextFirstName,
@@ -133,48 +117,18 @@ public class FirstLaunchActivity extends AppCompatActivity implements DatePicker
 
         //If none of the required fields are not empty, saveData()
         if(userModelValidation.validate()) {
-            saveData();
+            //saveData();
+            Bundle bundle = new Bundle();
+            bundle.putString("First name", firstName);
+            bundle.putString("last name", lastName);
+            bundle.putSerializable("Birth date", birthDate);
+            bundle.putString("Height", height);
+            bundle.putString("Weight", weight);
+
+            Intent intent = new Intent(this, FirstLaunchLongTermIllness.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
         }
-    }
-
-    /**
-     * Saves the user input to the database
-     */
-    private void saveData() {
-        //Create a new User object
-        User user = new User(firstName, lastName, birthDate, Integer.parseInt(height), Integer.parseInt(weight), longTermIllness);
-
-        //Inser created User in the database
-        this.db.userDao().insertAll(user);
-
-        Log.i("FirstLaunch", "Data saved");
-
-        Log.i("FirstLaunch", this.db.userDao().getAll().toString());
-
-        //Go to verify screen
-        Intent intent = new Intent(this, FirstLaunchDoneActivity.class);
-        startActivity(intent);
-    }
-
-    /**
-     * See which radio button is being selected
-     */
-    //Manages radio button selection. Yes displays a field for long term illness.
-    private void radioButtonSelection(){
-        radioGroup = findViewById(R.id.radioGroup);
-        editTextLongTermIllness = findViewById(R.id.editTextLongTermIllness);
-        radioGroup.setOnCheckedChangeListener((radioGroup1, i) -> {
-            //Log.i("Radio", "Radio button selection");
-            switch (i) {
-                case R.id.radioYes:
-                    editTextLongTermIllness.setVisibility(View.VISIBLE);
-                    //Log.d("Radio", "Radio yes");
-                    break;
-                case R.id.radioNo:
-                    editTextLongTermIllness.setVisibility(View.INVISIBLE);
-                    //Log.d("Radio", "Radio no");
-            }
-        });
     }
 
     /**

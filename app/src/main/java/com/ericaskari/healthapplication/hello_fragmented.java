@@ -28,15 +28,10 @@ import java.util.Date;
 
 public class hello_fragmented extends AppCompatActivity{
 
-
-
-
     FragmentManager fragmentManager;
     Button btn1;
     Button btn2;
     Fragment currentFragment;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +39,6 @@ public class hello_fragmented extends AppCompatActivity{
         setContentView(R.layout.activity_hello_fragmented);
 
         fragmentManager = getSupportFragmentManager();
-
-
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -63,19 +56,14 @@ public class hello_fragmented extends AppCompatActivity{
                 String current = (String) currentFragment.getTag();
 
                 if(current.equals("first")) {
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("some_int", 0);
-
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.flFragment, SecondHelloFragment.class, bundle, "second")
+                            .replace(R.id.flFragment, SecondHelloFragment.class, null, "second")
                             .setReorderingAllowed(true)
                             .addToBackStack(null) // name can be null
                             .commit();
                 } else if(current.equals("second")) {
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("some_int", 0);
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.flFragment, FirstHelloFragment.class, bundle, "first")
+                            .replace(R.id.flFragment, FirstHelloFragment.class, null, "first")
                             .setReorderingAllowed(true)
                             .addToBackStack(null) // name can be null
                             .commit();

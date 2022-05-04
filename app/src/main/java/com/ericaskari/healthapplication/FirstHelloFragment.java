@@ -57,6 +57,8 @@ public class FirstHelloFragment extends Fragment {
         }
 
         Log.i("Fragment", "Succes");
+        Bundle bundle = new Bundle();
+        bundle.putInt("One", 1);
     }
 
     @Override
@@ -64,5 +66,6 @@ public class FirstHelloFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_hello_first, container, false);
+
     }
 }

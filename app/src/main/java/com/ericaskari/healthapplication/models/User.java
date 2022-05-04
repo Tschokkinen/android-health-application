@@ -56,8 +56,10 @@ public class User {
                 "id='" + id + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", birthDate=" + birthDate +
-                ", weight=" + weight +
+                ", birthDate=" + birthDate + '\'' +
+                ", height=" + height + '\'' +
+                ", weight=" + weight + '\'' +
+                ", longTermIllness=" + longTermIllness +
                 '}';
     }
 

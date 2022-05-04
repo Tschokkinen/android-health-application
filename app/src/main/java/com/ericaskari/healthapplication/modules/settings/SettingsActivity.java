@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.ericaskari.healthapplication.databinding.SettingsBinding;
 import com.ericaskari.healthapplication.models.PainLog;
 import com.ericaskari.healthapplication.models.User;
-import com.ericaskari.healthapplication.modules.firstLaunch.FirstLaunchActivity;
+import com.ericaskari.healthapplication.modules.firstLaunch.FirstLaunchUserDataActivity;
 import com.ericaskari.healthapplication.services.AppDatabase;
 
 import java.util.List;
@@ -62,7 +62,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         //  Go to first launch
-        Intent intent = new Intent(this, FirstLaunchActivity.class);
+        Intent intent = new Intent(this, FirstLaunchUserDataActivity.class);
         startActivity(intent);
     }
 }

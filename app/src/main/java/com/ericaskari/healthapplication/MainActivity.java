@@ -2,11 +2,7 @@ package com.ericaskari.healthapplication;
 
 import static android.content.ContentValues.TAG;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,7 +11,7 @@ import com.ericaskari.healthapplication.adapters.HomePageListRecyclerViewAdapter
 import com.ericaskari.healthapplication.interfaces.OnHomePageItemClickListener;
 import com.ericaskari.healthapplication.models.HomePageButton;
 import com.ericaskari.healthapplication.models.User;
-import com.ericaskari.healthapplication.modules.firstLaunch.HelloActivity;
+import com.ericaskari.healthapplication.modules.firstLaunch.FirstLaunchHelloActivity;
 import com.ericaskari.healthapplication.modules.medicines.MedicinesActivity;
 import com.ericaskari.healthapplication.modules.painhistory.NewPainLogActivity;
 import com.ericaskari.healthapplication.modules.painhistory.PainHistoryActivity;
@@ -25,8 +21,6 @@ import com.ericaskari.healthapplication.services.AppDatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.ericaskari.healthapplication.databinding.ActivityMainBinding;
@@ -65,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements OnHomePageItemCli
         boolean isFirstLaunchNeeded = users.toArray().length == 0;
 
         if (isFirstLaunchNeeded) {
-            Intent intent = new Intent(this, HelloActivity.class);
+            Intent intent = new Intent(this, FirstLaunchHelloActivity.class);
             startActivity(intent);
 
         } else {

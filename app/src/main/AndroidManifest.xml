@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthApplication">
         <activity
+            android:name=".modules.painhistory.NewPainLogMentalStateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".modules.painhistory.NewPainLogMedicineActivity"
+            android:exported="false" />
+        <activity
             android:name=".modules.firstLaunch.FirstLaunchLongTermIllnessActivity"
             android:exported="false" />
         <activity

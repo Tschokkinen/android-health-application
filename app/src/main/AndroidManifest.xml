@@ -10,43 +10,43 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthApplication">
         <activity
-            android:name=".modules.painhistory.NewPainLogMentalStateActivity"
+            android:name=".NewPainLogMentalStateActivity"
             android:exported="false" />
         <activity
-            android:name=".modules.painhistory.NewPainLogMedicineActivity"
+            android:name=".NewPainLogMedicineActivity"
             android:exported="false" />
         <activity
-            android:name=".modules.firstLaunch.FirstLaunchLongTermIllnessActivity"
+            android:name=".FirstLaunchLongTermIllnessActivity"
             android:exported="false" />
         <activity
-            android:name=".modules.firstLaunch.FirstLaunchDoneActivity"
+            android:name=".FirstLaunchDoneActivity"
             android:exported="false" />
         <activity
-            android:name=".modules.painhistory.PainHistoryActivity"
+            android:name=".PainHistoryActivity"
             android:exported="false"
             android:label="@string/main_activity_pain_history" />
         <activity
-            android:name=".modules.medicines.MedicinesActivity"
+            android:name=".MedicinesActivity"
             android:exported="false"
             android:label="@string/main_activity_medicines" />
         <activity
-            android:name=".modules.settings.SettingsActivity"
+            android:name=".SettingsActivity"
             android:exported="false"
             android:label="@string/main_activity_settings" />
         <activity
-            android:name=".modules.profile.ProfileActivity"
+            android:name=".ProfileActivity"
             android:exported="false"
             android:label="@string/main_activity_own_information" />
         <activity
-            android:name=".modules.profile.ProfileEditActivity"
+            android:name=".ProfileEditActivity"
             android:exported="false"
             android:label="@string/main_activity_own_information" />
         <activity
-            android:name=".modules.painhistory.NewPainLogActivity"
+            android:name=".NewPainLogActivity"
             android:exported="false"
             android:label="@string/main_activity_plus" />
         <activity
-            android:name=".modules.firstLaunch.FirstLaunchHelloActivity"
+            android:name=".FirstLaunchHelloActivity"
             android:exported="false"
             android:label="Tervetuloa" />
         <activity
@@ -54,7 +54,7 @@
             android:exported="false"
             android:label="Kirjaa kipu" />
         <activity
-            android:name=".modules.firstLaunch.FirstLaunchUserDataActivity"
+            android:name=".FirstLaunchUserDataActivity"
             android:exported="false"
             android:label="@string/first_launch_activity_name" />
         <activity

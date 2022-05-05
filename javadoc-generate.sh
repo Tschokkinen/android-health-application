@@ -1,0 +1,11 @@
+/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home/bin/javadoc \
+-public \
+-splitindex \
+-use \
+-author \
+-version \
+-classpath ./app/src/main/java/com/ericaskari/healthapplication/**/*.java \
+-classpath ./app/build/generated/data_binding_base_class_source_out/debug/out/com/ericaskari/healthapplication/databinding/**/*.java \
+-classpath /Users/ericaska/Library/Android/sdk/platforms/android-31/android/widget/**/*.java \
+-sourcepath /Users/ericaska/Library/Android/sdk/platforms/android-30/android.jar \
+-d /Users/ericaska/Desktop/JavaDoc

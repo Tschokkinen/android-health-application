@@ -7,23 +7,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.ericaskari.healthapplication.adapters.HomePageListRecyclerViewAdapter;
-import com.ericaskari.healthapplication.interfaces.OnHomePageItemClickListener;
-import com.ericaskari.healthapplication.models.HomePageButton;
-import com.ericaskari.healthapplication.models.User;
-import com.ericaskari.healthapplication.modules.firstLaunch.FirstLaunchHelloActivity;
-import com.ericaskari.healthapplication.modules.medicines.MedicinesActivity;
-import com.ericaskari.healthapplication.modules.painhistory.NewPainLogActivity;
-import com.ericaskari.healthapplication.modules.painhistory.PainHistoryActivity;
-import com.ericaskari.healthapplication.modules.profile.ProfileActivity;
-import com.ericaskari.healthapplication.modules.settings.SettingsActivity;
-import com.ericaskari.healthapplication.services.AppDatabase;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.recyclerview.widget.GridLayoutManager;
-
-import com.ericaskari.healthapplication.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 import java.util.List;

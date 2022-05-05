@@ -7,17 +7,14 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
-import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
-
-import com.ericaskari.healthapplication.modules.painhistory.NewPainLogActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * @Gavril Tschokkinen
+ * @author Gavril Tschokkinen
  * NotificationService (service) is used to display a delayed notification after a pain has been reported.
  */
 

@@ -15,8 +15,8 @@ import com.ericaskari.healthapplication.R;
 import java.util.Date;
 
 /**
- * @author Gavril Tschokkinen
  * Used to gather the medicine taken for the pain and to pass on data from previous activity
+ * @author Gavril Tschokkinen
  */
 
 public class NewPainLogMedicineActivity extends AppCompatActivity {

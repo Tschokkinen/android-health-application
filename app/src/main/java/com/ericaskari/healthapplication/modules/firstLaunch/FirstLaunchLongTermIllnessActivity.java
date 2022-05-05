@@ -19,8 +19,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * @author Gavril Tschokkinen
  * Used to save data gathered in previous activity and ask the user if they have a long term illness
+ * @author Gavril Tschokkinen
  */
 public class FirstLaunchLongTermIllnessActivity extends AppCompatActivity {
     AppDatabase db;

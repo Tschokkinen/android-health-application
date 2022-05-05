@@ -9,8 +9,8 @@ import android.view.View;
 import com.ericaskari.healthapplication.R;
 
 /**
- * @author Gavril Tschokkinen
  * The initial activity run when the application is booted for the first time.
+ * @author Gavril Tschokkinen
  */
 
 public class FirstLaunchHelloActivity extends AppCompatActivity {

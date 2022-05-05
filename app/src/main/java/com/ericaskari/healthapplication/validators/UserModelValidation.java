@@ -5,8 +5,8 @@ import android.util.Log;
 import android.widget.TextView;
 
 /**
- *  @author Gavril Tschokkinen, Mohammad Askari
  * Used to check if all of the user data input fields are valid
+ *  @author Gavril Tschokkinen, Mohammad Askari
  */
 public class UserModelValidation {
     TextView firstName;

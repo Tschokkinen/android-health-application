@@ -14,8 +14,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
 /**
- * @author Mohammad Askari (Eric)
  * ViewHolder to inject data to {@link PainHistoryListItemBinding}
+ * @author Mohammad Askari (Eric)
  * Adapter {@link PainLogListRecyclerViewAdapter} will use this class to implement view of each list item.
  */
 public class PainHistoryListItemViewHolder extends RecyclerView.ViewHolder {

@@ -16,8 +16,8 @@ import com.ericaskari.healthapplication.services.AppDatabase;
 import java.util.Date;
 
 /**
- * @author Gavril Tschokkinen
  * Used to indicate that user data has been saved successfully.
+ * @author Gavril Tschokkinen
  */
 
 public class FirstLaunchDoneActivity extends AppCompatActivity {

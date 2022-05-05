@@ -1,7 +1,7 @@
 package com.ericaskari.healthapplication;
 
 /**
- * to pass data into {@link PainHistoryListItemViewHolder}
+ * Used to pass data into {@link PainHistoryListItemViewHolder}
  * NOT A DB MODEL
  */
 public class HomePageButton {

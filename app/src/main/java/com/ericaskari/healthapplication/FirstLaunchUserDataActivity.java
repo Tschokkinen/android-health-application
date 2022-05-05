@@ -16,8 +16,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * @author Gavril Tschokkinen
  * Activity for user data collection during the first launch of the application.
+ * @author Gavril Tschokkinen
  */
 
 public class FirstLaunchUserDataActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {

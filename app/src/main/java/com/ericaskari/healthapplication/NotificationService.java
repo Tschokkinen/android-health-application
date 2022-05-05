@@ -14,8 +14,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * @author Gavril Tschokkinen
  * NotificationService (service) is used to display a delayed notification after a pain has been reported.
+ * @author Gavril Tschokkinen
  */
 
 //Code taken partly from tutorial on https://www.tutorialspoint.com/send-a-notification-when-the-android-app-is-closed

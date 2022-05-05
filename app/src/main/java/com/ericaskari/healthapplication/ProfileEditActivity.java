@@ -15,7 +15,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- *
+ * ProfileEditActivity
  * @author Mohammad Askari (Eric)
  */
 public class ProfileEditActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {

@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 /**
- * @author Mohammad Askari (Eric)
  * RecyclerViewAdapter to handle list view.
  * It will use {@link PainHistoryListItemViewHolder} to inject data into
  * {@link PainHistoryListItemBinding}
+ * @author Mohammad Askari (Eric)
  */
 public class PainLogListRecyclerViewAdapter extends RecyclerView.Adapter<PainHistoryListItemViewHolder> {
 

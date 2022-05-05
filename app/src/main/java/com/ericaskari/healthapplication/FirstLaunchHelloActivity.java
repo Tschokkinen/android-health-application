@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 
 /**
- * @author Gavril Tschokkinen
  * The initial activity run when the application is booted for the first time.
+ * @author Gavril Tschokkinen
  */
 
 public class FirstLaunchHelloActivity extends AppCompatActivity {

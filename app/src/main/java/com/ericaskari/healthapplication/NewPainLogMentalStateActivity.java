@@ -11,8 +11,8 @@ import android.widget.EditText;
 import java.util.Date;
 
 /**
- * @author Gavril Tschokkinen
  * Gathers together all of the input data related to a new pain and passess it to the database
+ * @author Gavril Tschokkinen
  */
 
 public class NewPainLogMentalStateActivity extends AppCompatActivity {

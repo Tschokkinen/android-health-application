@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- *
+ * PainHistoryActivity
  * @author Mohammad Askari (Eric)
  */
 public class PainHistoryActivity extends AppCompatActivity {

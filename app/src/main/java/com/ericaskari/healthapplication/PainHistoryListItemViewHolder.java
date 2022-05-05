@@ -9,9 +9,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
 /**
- * @author Mohammad Askari (Eric)
  * ViewHolder to inject data to {@link PainHistoryListItemBinding}
  * Adapter {@link PainLogListRecyclerViewAdapter} will use this class to implement view of each list item.
+ * @author Mohammad Askari (Eric)
  */
 public class PainHistoryListItemViewHolder extends RecyclerView.ViewHolder {
     private final PainHistoryListItemBinding binding;

@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 
 /**
- * @author Gavril Tschokkinen
  * Used to indicate that user data has been saved successfully.
+ * @author Gavril Tschokkinen
  */
 
 public class FirstLaunchDoneActivity extends AppCompatActivity {

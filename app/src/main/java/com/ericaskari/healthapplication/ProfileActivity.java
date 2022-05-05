@@ -15,8 +15,8 @@ import java.util.Date;
 
 
 /**
+ * ProfileActivity
  * @author Mohammad Askari (Eric)
- *
  */
 public class ProfileActivity extends AppCompatActivity {
     //  View reference

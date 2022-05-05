@@ -4,6 +4,9 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * MedicineActivity
+ */
 public class MedicinesActivity extends AppCompatActivity {
     private MedicinesBinding medicinesActivityBinding;
 

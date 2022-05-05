@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
+ * RecycleView ViewHolder for elements in list
  * @author Mohammad Askari (Eric)
  */
 public class HomePageButtonListItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
 
 /**
+ * SettingsActivity
  * @author Mohammad Askari (Eric)
  */
 public class SettingsActivity extends AppCompatActivity {

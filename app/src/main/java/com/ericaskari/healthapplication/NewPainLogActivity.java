@@ -17,8 +17,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * @author Gavril Tschokkinen
  * Used to gather information related to new pain and to pass on data from previous activity
+ * @author Gavril Tschokkinen
  */
 
 public class NewPainLogActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {

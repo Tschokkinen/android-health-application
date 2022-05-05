@@ -17,8 +17,8 @@
             android:layout_width="376dp"
             android:layout_height="45dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
             android:ems="10"
             android:gravity="start|top"
             android:hint="@string/describe_the_pain"
@@ -28,6 +28,55 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectPainSpinner" />
 
+        <RadioGroup
+            android:id="@+id/radioGroupLogPain"
+            android:layout_width="75dp"
+            android:layout_height="112dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:checkedButton="@id/radioButtonPainLogNo"
+            android:onClick="buttonManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+            <RadioButton
+                android:id="@+id/radioButtonPainLogYes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="buttonManager"
+                android:text="@string/radio_button_yes" />
+
+            <RadioButton
+                android:id="@+id/radioButtonPainLogNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="buttonManager"
+                android:text="@string/radio_button_no" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="36dp"
+            android:text="@string/have_you_taken_medicine_for_the_pain"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBarHowStrongIsThePain" />
+
+        <EditText
+            android:id="@+id/editTextMedicineTaken"
+            android:layout_width="225dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="@string/medicine_taken_for_the_pain"
+            android:inputType="textPersonName"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@+id/radioGroupLogPain"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
         <Button
             android:id="@+id/buttonLogPainReady"
             android:layout_width="wrap_content"
@@ -35,7 +84,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:onClick="buttonManager"
-            android:text="@string/user_data_nextButton"
+            android:text="@string/button_ready"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -44,7 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="68dp"
+            android:layout_marginTop="16dp"
             android:text="@string/how_strong_is_the_pain"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextDescription" />
@@ -72,13 +121,35 @@
             app:layout_constraintStart_toEndOf="@+id/seekBarHowStrongIsThePain"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
+        <TextView
+            android:id="@+id/textViewHowDoesThePainAffect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/how_does_the_pain_affect"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroupLogPain" />
+
+        <EditText
+            android:id="@+id/editTextTellAboutYourFeelings"
+            android:layout_width="375dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:hint="@string/tell_about_your_feelings"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewHowDoesThePainAffect" />
 
         <Spinner
             android:id="@+id/selectPainSpinner"
             android:layout_width="286dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toTopOf="@+id/editTextDescription"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pickAPain" />
@@ -90,7 +161,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/where_is_the_pain"
-            android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/selectPainSpinner"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

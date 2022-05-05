@@ -7,30 +7,23 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
-import com.ericaskari.healthapplication.MainActivity;
-import com.ericaskari.healthapplication.NotificationService;
 import com.ericaskari.healthapplication.R;
-import com.ericaskari.healthapplication.models.PainLog;
-import com.ericaskari.healthapplication.services.AppDatabase;
 
 import java.util.Calendar;
 import java.util.Date;
 
 /**
  * @author Gavril Tschokkinen
- * Used to log a new pain into the pain history. Gathers all of the input data and passess it to the database
+ * Used to gather information related to new pain and to pass on data from previous activity
  */
 
 public class NewPainLogActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    AppDatabase db; //Database
 
     private com.ericaskari.healthapplication.databinding.NewPainLogBinding NewPainLogBinding;
 
@@ -40,19 +33,12 @@ public class NewPainLogActivity extends AppCompatActivity implements AdapterView
     private Spinner selectPainSpinner; //Used to display a list of pains
     private EditText editTextDescription; //Pain description field
     private TextView textViewPainStrength; //Pain strength view
-    private EditText editTextMedicineTakenForThePain; //Taken medicine field
-    private RadioGroup radioGroupLogPain;
-    private EditText editTextTellAboutYourFeelings; //Feelings field
 
     //Strings
     private String selectedPain;
     private String description;
     private String descriptionDefault = "Ei kuvausta"; //Default description
-    private String takenMedicine;
-    private String takenMedicineDefault = "Ei otettua lääkettä."; //Default taken medicine
     private SeekBar seekBarHowStrongIsThePain;
-    private String tellAboutYourFeelings;
-    private String tellAboutYourFeelingsDefault = "Kipu ei vaikuttanut mielialaan.";
 
     //Ints
     private int howStrongIsThePain; //Pain strength
@@ -68,16 +54,9 @@ public class NewPainLogActivity extends AppCompatActivity implements AdapterView
         NewPainLogBinding = NewPainLogBinding.inflate(getLayoutInflater());
         setContentView(NewPainLogBinding.getRoot());
 
-        //Get database
-        this.db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app-db").allowMainThreadQueries().build();
-
         //Get Edit text and Text view views
         editTextDescription = findViewById(R.id.editTextDescription);
-        editTextMedicineTakenForThePain = findViewById(R.id.editTextMedicineTaken);
         textViewPainStrength = findViewById(R.id.textViewPainStrenght);
-        editTextTellAboutYourFeelings = findViewById(R.id.editTextTellAboutYourFeelings);
-
-        radioButtonSelection();
 
         //Get seekbar and assign max value and click interval when moved
         seekBarHowStrongIsThePain = findViewById(R.id.seekBarHowStrongIsThePain);
@@ -119,36 +98,17 @@ public class NewPainLogActivity extends AppCompatActivity implements AdapterView
      * @param v
      */
     public void buttonManager(View v) {
-        if(v == findViewById(R.id.radioGroupLogPain)) {
-            Log.i("Radio", "Radio button selection");
-            radioButtonSelection();
-        } else if (v == findViewById(R.id.buttonLogPainReady)) {
+        if (v == findViewById(R.id.buttonLogPainReady)) {
             Log.i("Button", "Button clicked");
             gatherData(); //Start gathering user input
         }
     }
 
     /**
-     * Manages radio button selection
-     */
-    private void radioButtonSelection() {
-        radioGroupLogPain = findViewById(R.id.radioGroupLogPain);
-        radioGroupLogPain.setOnCheckedChangeListener((radioGroup, i) -> {
-            switch (i) {
-                case R.id.radioButtonPainLogYes:
-                    //Set text view active
-                    editTextMedicineTakenForThePain.setVisibility(View.VISIBLE);
-                    break;
-                case R.id.radioButtonPainLogNo:
-                    //Set text view inactive
-                    editTextMedicineTakenForThePain.setVisibility(View.INVISIBLE);
-            }
-        });
-    }
-
-    /**
      * Gathers the user input from the activity and assigns default values as necessary.
+     * Finally passes the data on to the next activity
      */
+    //Gathers all of the data and passes it on to the next activity
     private void gatherData() {
         currentTime = Calendar.getInstance().getTime(); //Get time and date of log
 
@@ -162,41 +122,17 @@ public class NewPainLogActivity extends AppCompatActivity implements AdapterView
         //Get pain strength (int)
         howStrongIsThePain = seekBarHowStrongIsThePain.getProgress();
 
-        //Check if user has reported taken any medication for the pain
-        if(!editTextMedicineTakenForThePain.getText().toString().isEmpty()) {
-            takenMedicine = editTextMedicineTakenForThePain.getText().toString();
-        } else {
-            takenMedicine = takenMedicineDefault; //Assign default value
-        }
+        //Bundle data
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Date", currentTime);
+        bundle.putString("Selected pain", selectedPain);
+        bundle.putString("Description", description);
+        bundle.putInt("Pain strength", howStrongIsThePain);
 
-        //Check if user has reported any feelings regarding the pain
-        if(!editTextTellAboutYourFeelings.getText().toString().isEmpty()) {
-            tellAboutYourFeelings = editTextTellAboutYourFeelings.getText().toString();
-        } else {
-            tellAboutYourFeelings = tellAboutYourFeelingsDefault; //Assign default value
-        }
-
-        //Log.i("Pain", String.valueOf(howStrongIsThePain));
-
-        saveData(); //Call saveData()
-    }
-
-    /**
-     * Saves the data to the database and creates a notification
-     */
-    private void saveData() {
-        PainLog painLog = new PainLog(currentTime, selectedPain, description, takenMedicine, howStrongIsThePain, tellAboutYourFeelings);
-        this.db.painLogDao().insertAll(painLog);
-
-        //Log.i("PainLog", this.db.painLogDao().getAll().toString());
-
-        //Start a notification service
-        startService(new Intent(this, NotificationService.class));
-
-        //Go back to main activity
-        Intent intent = new Intent(this, MainActivity.class);
+        //Go to the next activity and pass on the gathered data
+        Intent intent = new Intent(this, NewPainLogMedicineActivity.class);
+        intent.putExtras(bundle);
         startActivity(intent);
-        finish(); //Close current activity
     }
 
     /**

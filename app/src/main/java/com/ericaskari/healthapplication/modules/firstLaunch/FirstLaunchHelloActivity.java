@@ -13,7 +13,7 @@ import com.ericaskari.healthapplication.R;
  * The initial activity run when the application is booted for the first time.
  */
 
-public class HelloActivity extends AppCompatActivity {
+public class FirstLaunchHelloActivity extends AppCompatActivity {
 
     /**
      *
@@ -22,7 +22,7 @@ public class HelloActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hello);
+        setContentView(R.layout.activity_first_launch_hello);
     }
 
     /**
@@ -31,7 +31,8 @@ public class HelloActivity extends AppCompatActivity {
      */
     public void buttonManager(View v){
         if(v == findViewById(R.id.nextButtonHello)){
-            Intent intent = new Intent(this, FirstLaunchActivity.class);
+            //Go to the next activity
+            Intent intent = new Intent(this, FirstLaunchUserDataActivity.class);
             startActivity(intent);
         }
     }

@@ -1,40 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Author: Gavril Tschokkinen -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="10dp">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/userDataTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/user_data_title"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/textViewFirstName"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="84dp"
-            android:orientation="vertical">
+    <TextView
+        android:id="@+id/userDataTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/user_data_title"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewFirstName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textViewFirstName"
@@ -59,13 +41,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewFirstName" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="91dp"
-            android:orientation="vertical">
-
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
@@ -88,28 +63,17 @@
                 app:layout_constraintBottom_toTopOf="@+id/textView10"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/user_data_text_age_title"
-                app:layout_constraintBottom_toTopOf="@+id/textViewBirthDate"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lastName" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="67dp"
-                android:orientation="horizontal">
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/user_data_text_age_title"
+        app:layout_constraintBottom_toTopOf="@+id/textViewBirthDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastName" />
 
                 <TextView
                     android:id="@+id/textViewBirthDate"
@@ -136,25 +100,17 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textViewBirthDate"
                     app:layout_constraintTop_toBottomOf="@+id/textView10" />
-            </LinearLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="68dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/user_data_text_height"
-                app:layout_constraintBottom_toTopOf="@+id/height"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewBirthDate" />
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/user_data_text_height"
+        app:layout_constraintBottom_toTopOf="@+id/height"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBirthDate" />
 
             <EditText
                 android:id="@+id/height"
@@ -167,13 +123,6 @@
                 app:layout_constraintBottom_toTopOf="@+id/textView12"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="62dp"
-            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView12"
@@ -196,58 +145,6 @@
                 android:inputType="number"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView12" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="184dp"
-            android:orientation="horizontal">
-
-            <RadioGroup
-                android:id="@+id/radioGroup"
-                android:layout_width="83dp"
-                android:layout_height="98dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:checkedButton="@+id/radioNo"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2">
-
-                <RadioButton
-                    android:id="@+id/radioYes"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="buttonManager"
-                    android:text="@string/radio_button_yes" />
-
-                <RadioButton
-                    android:id="@+id/radioNo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="buttonManager"
-                    android:text="@string/radio_button_no" />
-
-            </RadioGroup>
-
-            <EditText
-                android:id="@+id/editTextLongTermIllness"
-                android:layout_width="281dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:hint="@string/user_data_text_long_term_illness"
-                android:inputType="textMultiLine"
-                android:visibility="invisible"
-                app:layout_constraintStart_toEndOf="@+id/radioGroup"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="end">
 
             <Button
                 android:id="@+id/nextButtonFirstLaunchLongTermIllness"
@@ -259,6 +156,4 @@
                 android:text="@string/user_data_nextButton"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
-        </LinearLayout>
-    </LinearLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
